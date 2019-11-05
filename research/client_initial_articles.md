@@ -32,3 +32,6 @@ https://github.com/deepmind/bsuite
 https://medium.com/@apoddar573/making-your-own-custom-environment-in-gym-c3b65ff8cdaa 
 
 https://www.novatec-gmbh.de/en/blog/creating-a-gym-environment/ 
+
+### Sockets:
+https://beej.us/guide/bgnet/html/
