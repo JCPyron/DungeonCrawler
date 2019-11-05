@@ -23,7 +23,7 @@ static int infd = 0;  /* stdin */
 static int
 timeouted_read(int fd, void *buf, int buflen)
 {
-    struct timeval timeout = {.tv_sec = 15, .tv_usec = 0};
+    struct timeval timeout = {.tv_sec = 30, .tv_usec = 0};
     fd_set readfds;
     int ready_fds;
 
@@ -40,6 +40,7 @@ timeouted_read(int fd, void *buf, int buflen)
         /* Timeout. This is a silent disconnection; we want the other end of
            the connection to stay dormant until it tries to send something. */
         log_msg("Timeout during authentication. Disconnecting.");
+        fprintf(stderr, "Timeout during authentication\n");
         exit_server(EXIT_SUCCESS, 0);
     } else {
         /* Error. */
@@ -119,6 +120,7 @@ runserver(void)
     if (userid >= 0)
         newclient(userid);
     else
+        fprintf(stderr, "ERROR ON STARTUP: AUTH FAILED\n");
         exit_server(EXIT_FAILURE, 0);
 }
 
@@ -133,6 +135,7 @@ exit_server(int exitstatus, int coredumpsignal)
     }
 
     /* shutdown */
+    fprintf(stderr, "Server shutdown initiated\n");
     end_logging();
     close_database();
     free_config();

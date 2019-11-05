@@ -1,0 +1,3 @@
+#!/bin/bash
+~/nethack4/nethack4-server -H localhost -o 5432 -u nethack -a pass -D netdb
+
