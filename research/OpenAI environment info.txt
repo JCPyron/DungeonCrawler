@@ -1,0 +1,142 @@
+-Environments all descend from the Env base class
+
+-A standard gym environment (https://github.com/openai/gym/blob/master/gym/core.py) includes the following...
+
+	-class Env(object)
+
+		-The main OpenAI Gym class. It encapsulates an environment with
+    		arbitrary behind-the-scenes dynamics. An environment can be
+    		partially or fully observed.
+
+    		-The main API methods that users of this class need to know are:
+        		step
+        		reset
+        		render
+        		close
+        		seed
+	
+		-We may set action_space, observation_space, and reward_range
+
+			reward_range is automatically set between negative infinity and infinity
+
+		step: runs one timestep of environment's dynammics
+			when one episode is complete, we must call reset() to reset the environment's state
+
+			Args:
+				action: action provided by the agent
+
+			Returns:
+				observation: agent's observation of current environment
+				reward: amount of reward returned after action
+				done: whether the episode has ended
+				info: diagnostics (debugging)
+
+
+
+		reset: resets the environment
+
+			Returns:
+
+				observation: initial observation
+
+
+		render: renders the environment
+
+			if the mode is...
+
+				human: render to the current display or terminal and return nothing
+
+				rgb_array: Return an numpy.ndarray with shape (x, y, 3), representing RGB values for an x-by-y pixel image, suitable for turning into a video.
+
+				ansi: return a string or StringIO.StringIO containing a terminal-style text representation
+
+					the text can include newlines and ANSI escape sequences	
+
+
+		close: overrride close in subclass to perform any necessary cleanup
+
+
+		seed: sets the seed for environment's random number generator
+
+			Returns: the list of seeds used in this env's random
+              		number generators.
+
+
+	-class GoalEnv
+
+		-a goal-based environment. It functions just as any regular OpenAI Gym environment but it imposes a required structure on the observation_space. More concretely, the observation space is required to contain at least three elements, namely `observation`, `desired_goal`, and `achieved_goal`. Here, `desired_goal` specifies the goal that the agent should attempt to achieve. `achieved_goal` is the goal that it currently achieved instead. `observation` contains the actual observations of the environment as per usual.
+
+
+		compute_reward:
+
+			compute the step reward
+
+			Args:
+				achieved_goal: the goal that was achieved during the execution
+				desired_goal: the desired goal that the agent was asked to achieve
+				
+			Returns:
+				float: reward that corresponds to the provided achieved goal with respect to the desired goal
+
+
+
+-Common things in peoples' environments:
+
+
+	__init__ method functions:
+
+		-initializes values, attributes, etc of the environment that are needed
+
+			For example in the cartpole:
+
+				gravity is set to 9.8, masscart is set to 1, etc
+
+		-simple calculations to determine other attributes needed occur here
+
+			in the cartpole example,
+
+				self.polemass_length = (self.masspole * self.length)
+
+		-establish boundaries for the space used
+
+		-create the action space and observation space
+
+		-generate the seed
+
+			-Example seed method used in cartpole and mountain car:
+
+			def seed(self, seed=None):
+        			self.np_random, seed = seeding.np_random(seed)
+        			return [seed]		
+
+
+	step method:
+
+		-perform the actions you want in order to achieve the purpose of your environment
+
+		-establish a reason to reset the environment (done == true)
+
+			-the reward value depends on whether done is equal to true or not
+
+		-"return np.array(self.state), reward, done, {}"
+
+
+	reset method:
+
+		-reset the environment to its initial state
+
+	
+	render method:
+
+		-set the width and height of the screen, as well as the same dimensions for the figures in your screen
+
+		-basically create and customize everything that will be "rendered" on the physical screen for your environment
+
+		-if "self.viewer is None:" the initial screen will be constructed
+
+			-Otherwise, the method grabs the info from the previous state of the screen, stores the new information, and displays the new state on the screen
+
+	
+	close method:
+
+		when the program exits, the environment will be closed

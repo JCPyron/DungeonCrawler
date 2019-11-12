@@ -1,0 +1,31 @@
+"auth":
+ {
+  "string username": "personplaying",
+  "string password": "personpassword"
+ }
+
+"exit_game":
+ {
+  "EXIT_SAVE": 0,
+  "EXIT_QUIT": 1,
+  "EXIT_PANIC": 2,
+  "EXIT_RESTART": 3
+ }
+
+"get_obj_commands":
+ {
+  "charcode invlet": "letter of item to get commands for"
+ }
+
+"create_game":
+ {
+  "struct nh_option_desc[] options": ["game_mode", "character", "character name"]
+ }
+
+"play_game":
+ {
+   "int gameid": "value returned from 'list_games' or 'create_game'",
+   "FM_PLAY": 0,
+   "FM_WATCH": 1,
+   "FM_REPLAY": 2
+ }
