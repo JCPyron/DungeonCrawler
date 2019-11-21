@@ -1,4 +1,6 @@
-sudo apt-get install libpq-dev g++ gcc build-essential libpng-dev zlib1g-dev bison flex openbsd-inetd postgresql-server-dev-all postgresql-contrib libjansson-dev zlib1g-dev
+#!/bin/bash
+sudo apt-get install libpq-dev g++ gcc build-essential libpng-dev zlib1g-dev bison flex 
+sudo apt-get install openbsd-inetd postgresql-server-dev-all postgresql-contrib libjansson-dev zlib1g-dev
 sudo apt-get update
 sudo apt-get upgrade
 echo "Dependancies installed"
