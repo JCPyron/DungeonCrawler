@@ -27,34 +27,41 @@ class Interact:
         self.client.close()
 
     # reads from stdout
-    def readOut(self):
-        s = ""
-        c = self.stdout.read(1)
-        while c != b'\x00':
-            s += str(c.decode("utf-8"))
-            c = self.stdout.read(1)
-        return json.loads(s)
+    # reads one character at a time because the server ends response with null character, not EOF
+    def read_out(self):
+        out_str = ""
+        read_char = self.stdout.read(1)
+        while read_char != b'\x00':
+            out_str += str(read_char.decode("utf-8"))
+            read_char = self.stdout.read(1)
+        return json.loads(out_str)
 
     # read from stderr
-    def readErr(self):
-        s = ""
-        c = self.stderr.read(1)
-        while c != b'\x00':
-            s += str(c.decode("utf-8"))
-            c = self.stderr.read(1)
-        return json.loads(s)
+    # reads one character at a time because the server ends response with null character, not EOF
+    def read_err(self):
+        out_str = ""
+        read_char = self.stderr.read(1)
+        while read_char != b'\x00':
+            out_str += str(read_char.decode("utf-8"))
+            read_char = self.stderr.read(1)
+        return json.loads(out_str)
 
     # authenticate with the server
     def auth(self):
         self.stdin.write('{"auth":{"username":"XXX","password":"YYY","email":"NULL"}}\n')
-        ret = self.readOut()
-        if ret["auth"]["return"] == 3: return True
+        server_response = self.read_out()
+        if server_response["auth"]["return"] == 3:
+            return True
         return False
 
-    def startGame(self):
-        self.stdin.write('{"get_options":{"list":1}')
-        print(str(self.readOut()))
-i=Interact()
-if i.auth(): print("connected")
-else: print("err connecting")
-i.startGame()
+    def start_game(self):
+        self.stdin.write('{"get_options":{"list":1}}')
+        print(str(self.read_out()))
+
+
+i = Interact()
+if i.auth():
+    print("connected")
+else:
+    print("err connecting")
+i.start_game()
