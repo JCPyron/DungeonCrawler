@@ -1,30 +1,26 @@
 import paramiko
 import json
 
-class Interact:
-    # ssh info
-    host_name = ''
-    user_name_ssh = ''
-    key = ''
 
-    # I/O
+class Interact:
+    # Logon Info
+    hostname = ''
+    username = ''
+    key = ''
     stdin = ''
     stdout = ''
     stderr = ''
     client = ''
 
     # init connection and get file descriptors
-    def __init__(self, host_name, user_name, key_path):
-        # connection information
-        self.host_name = host_name
-        self.user_name_ssh = user_name
-        self.key = paramiko.RSAKey.from_private_key_file(key_path)      
-
-        # connect
+    def __init__(self, hostname, username, key_path):
+        self.hostname = hostname
+        self.username = username
+        self.key = paramiko.RSAKey.from_private_key_file(key_path)
+        # connect to the server
         self.client = paramiko.SSHClient()
-        self.client.load_system_host_keys()
         self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        self.client.connect(self.host_name, port=22, username=self.user_name_ssh, pkey=self.key)
+        self.client.connect(self.hostname, port=22, username=self.username, pkey=self.key)
         self.stdin, self.stdout, self.stderr = self.client.exec_command("~/startServer")
 
     # runs on exit, closes connection
@@ -55,21 +51,31 @@ class Interact:
         return json.loads(out_str)
 
     # authenticate with the server
-    def auth(self, user_name, password):
-        # json to utf-8
-        auth = {"auth": {"username": user_name, "password": password, "email": "NULL"}}
-        data = json.dumps(auth)
-        data.encode('utf-8')
-
-        # write and read data 
-        self.stdin.write(data)
+    def auth(self, username, password, email):
+        auth_str = {"auth": {"username": username, "password": password, "email": "NULL"}}
+        send_data = json.dumps(auth_str).encode('utf_8')
+        self.stdin.write(send_data)
         server_response = self.read_out()
-        print(server_response)
         if server_response["auth"]["return"] == 3:
+            return True
+        # if the user was not found, registers the user
+        elif server_response["auth"]["return"] == 1:
+            self.stdin, self.stdout, self.stderr = self.client.exec_command("~/startServer")
+            return self.register(username, password, email)
+        return False
+
+    # registers the user with the server
+    def register(self, username, password, email):
+        auth_str = {"register": {"username": username, "password": password, "email": email}}
+        send_data = json.dumps(auth_str).encode('utf_8')
+        self.stdin.write(send_data)
+
+        server_response = self.read_out()
+        if server_response["register"]["return"] == 3:
             return True
         return False
 
-    # start a game of nethack4
+    # begins the game - WARNING!!!!: INCOMPLETE
     def start_game(self):
         self.stdin.write('{"get_options":{"list":1}}')
         print(str(self.read_out()))

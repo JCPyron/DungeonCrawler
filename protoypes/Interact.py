@@ -52,16 +52,22 @@ class Interact:
         server_response = self.read_out()
         if server_response["auth"]["return"] == 3:
             return True
+        # if the user was not found, registers the user
+        elif server_response["auth"]["return"]==1:
+            self.stdin, self.stdout, self.stderr = self.client.exec_command("~/startServer")
+            return self.register()
+        return False
+    
+    # registers the user with the server
+    def register(self):
+        self.stdin.write(
+            '{"register":{"username":"XXX","password":"YYY","email":"jcpyron@gmail.com"}}\n')
+        server_response = self.read_out()
+        if server_response["register"]["return"] == 3:
+            return True
         return False
 
+    # begins the game - WARNING!!!!: INCOMPLETE
     def start_game(self):
         self.stdin.write('{"get_options":{"list":1}}')
         print(str(self.read_out()))
-
-
-i = Interact()
-if i.auth():
-    print("connected")
-else:
-    print("err connecting")
-i.start_game()
