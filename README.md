@@ -5,6 +5,43 @@ RL environment created for ECE/MEE 341L
 ## Documentation
 The Dungeon Crawlers decided to use NetHack4 as the open source code for their project because the game functions very similar to NetHack, and it's much more readable.
 
+## Installation of DungeonCrawler (For Windows)
+
+### 1) Install  Python 
+
+Newest version can be found at: https://www.python.org/downloads/
+
+### 2) Install Git Bash
+
+Newest version can be found at: https://git-scm.com/downloads
+
+### 3) Add Python to the Path 
+
+Open Git Bash and try the `python --version` command. If the command is not found, Python needs to be added to the Path. To do this, use the command `export PATH="$PATH:/c/Program Files/PythonXX"` and replace the quoted in section with the correct file path to Python on your system
+
+###### Note:	Using export will only keep Python on the path for that session of Git Bash. To keep it 	permanently, it will require the editing of .bashrc
+
+### 4) Installing Pip
+
+Before doing this step make sure Git Bash is running as an administrator. In Git Bash run the `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py` command to install required python file. Once the download finished, use the python `get-pip.py` command to install Pip. Similar to before, add Pip to the Path: `export PATH="$PATH:/c/Program Files/PythonXX/Scripts/"`.
+
+### 5)  Clone the Repository
+
+Go the folder you would like to install the DungeonCrawler in Git Bash and clone the repository using `git clone https://github.com/JCPyron/DungeonCrawler.git` .
+
+### 6) Installing Dependencies
+
+In Git Bash, run the following commands in order Pip to install the required decencies for the Agent and Environment:
+```
+pip install gym
+pip install paramiko
+pip install -e DungeonCrawler
+```
+
+### 7) Run the Agent
+
+Running the Agent is as simple as going to the **agents** directory and running the command `python random_agent.py` in Git Bash. 
+
 ## Resources
 
 ### Reinforcement Learning Articles:
