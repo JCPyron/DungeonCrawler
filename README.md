@@ -1,35 +1,90 @@
 # Dungeon Crawler
-## Introduction
-RL environment created for ECE/MEE 341L
 
-## Documentation
+## Table of contents
+1. [Documentation](#doc)
+    1. [Setting up the game server](#server)
+    2. [Installing the Crawler](#crawl)
+    3. [Creating more actions](#act)
+3. [Resources](#resources)
+
+
+## Documentation <a name="doc"></a>
 The Dungeon Crawlers decided to use NetHack4 as the open source code for their project because the game functions very similar to NetHack, and it's much more readable.
 
-## Installation of DungeonCrawler (For Windows)
+### Setting up the game server <a name="server"></a>
 
-### 1) Install  Python 
+#### 1) Spin up the AWS instance (or any server of your choice)
+
+The guide to set up an AWS instance can be found here: https://aws.amazon.com/ec2/getting-started/
+
+#### 2) Install git
+
+use the command `sudo apt-get install git`
+
+#### 3) link the AWS git command to your GitHub account for SSH
+
+A guide to do this can be found here: https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+#### 4) Clone the GitHub Repository
+
+`git clone git@github.com:JCPyron/DungeonCrawler.git`
+
+#### 5) Copy all the files in the "ServerFiles" folder to the home directory
+
+`cp -r ~/DungeonCrawler/ServerFiles/* ~`
+
+#### 6) Run the setup files
+
+`./setup`
+
+#### 7) Set up the PostgreSQL Database
+
+```
+sudo adduser nethack
+```
+*Password is "pass"*
+```
+sudo -u postgres createdb netdb
+sudo -u postgresql createuser --interactive
+```
+*nethack*
+*y*
+
+```
+sudo -u nethack psql -d netdb
+CREATE EXTENSION pgcrypto;
+\q
+```
+
+#### 8) Run the server
+`./startServer`
+
+
+### Installation of DungeonCrawler (For Windows)<a name="crawl"></a>
+
+#### 1) Install  Python
 
 Newest version can be found at: https://www.python.org/downloads/
 
-### 2) Install Git Bash
+#### 2) Install Git Bash
 
 Newest version can be found at: https://git-scm.com/downloads
 
-### 3) Add Python to the Path 
+#### 3) Add Python to the Path
 
 Open Git Bash and try the `python --version` command. If the command is not found, Python needs to be added to the Path. To do this, use the command `export PATH="$PATH:/c/Program Files/PythonXX"` and replace the quoted in section with the correct file path to Python on your system
 
-###### Note:	Using export will only keep Python on the path for that session of Git Bash. To keep it 	permanently, it will require the editing of .bashrc
+** Note:	Using export will only keep Python on the path for that session of Git Bash. To keep it 	permanently, it will require the editing of .bashrc**
 
-### 4) Installing Pip
+#### 4) Installing Pip
 
 Before doing this step make sure Git Bash is running as an administrator. In Git Bash run the `curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py` command to install required python file. Once the download finished, use the python `get-pip.py` command to install Pip. Similar to before, add Pip to the Path: `export PATH="$PATH:/c/Program Files/PythonXX/Scripts/"`.
 
-### 5)  Clone the Repository
+#### 5)  Clone the Repository
 
 Go the folder you would like to install the DungeonCrawler in Git Bash and clone the repository using `git clone https://github.com/JCPyron/DungeonCrawler.git` .
 
-### 6) Installing Dependencies
+#### 6) Installing Dependencies
 
 In Git Bash, run the following commands in order Pip to install the required decencies for the Agent and Environment:
 ```
@@ -38,11 +93,39 @@ pip install paramiko
 pip install -e DungeonCrawler
 ```
 
-### 7) Run the Agent
+#### 7) Run the Agent
 
-Running the Agent is as simple as going to the **agents** directory and running the command `python random_agent.py` in Git Bash. 
+Running the Agent is as simple as going to the **agents** directory and running the command `python random_agent.py` in Git Bash.
 
-## Resources
+### Creating more game actions <a name="act"></a>
+
+Actions are sent to the server via JSON commands formatted in a magical way as seen in the perfect and well-written Documentation seen here: https://nethackwiki.com/wiki/NetHack_4_Network_Protocol
+The best example of how actions can be added to the Interact class (located in gym_crawler/Interaction folder) is the "register" command seen below
+
+```Python
+def register(self, username, password, email):
+    reg_str = {"register": {"username": username, "password": password, "email": email}}
+    send_data = json.dumps(reg_str).encode('utf_8')
+    self.stdin.write(send_data)
+
+    server_response = self.read_out()
+    if server_response["register"]["return"] == 3:
+        return True
+    return False
+```
+The method creates a JSON object with the fields and their values (provided by the Wiki), uses the json.dumps command to write the command to a string and encodes it to utf-8. The command is then written to stdin and the server response is read. If it was successful, it returns True.
+
+All commands will look similar to this method. They should create a JSON object with the proper fields and then write to stdin. The largest problem with the server is that it shuts down after a command is received that is improperly formatted.
+
+For implementation, when the agent decides it wants to preform a specific action, it will simply run the method which will then send the command to the server.
+
+During development, we tried to keep everything as separated as possible to allow for individual, concurrent development. It also allows the code to be easily improved and developed.
+
+
+## Resources <a name="resources"></a>
+
+### NetHack4 wiki
+https://nethackwiki.com/wiki/NetHack_4
 
 ### Reinforcement Learning Articles:
 

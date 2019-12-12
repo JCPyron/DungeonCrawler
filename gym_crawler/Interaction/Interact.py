@@ -66,8 +66,8 @@ class Interact:
 
     # registers the user with the server
     def register(self, username, password, email):
-        auth_str = {"register": {"username": username, "password": password, "email": email}}
-        send_data = json.dumps(auth_str).encode('utf_8')
+        reg_str = {"register": {"username": username, "password": password, "email": email}}
+        send_data = json.dumps(reg_str).encode('utf_8')
         self.stdin.write(send_data)
 
         server_response = self.read_out()
