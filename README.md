@@ -93,7 +93,11 @@ pip install paramiko
 pip install -e DungeonCrawler
 ```
 
-#### 7) Run the Agent
+#### 7) Update the Config File
+
+The connection and logon information in the config file must be updated to be able to connect to you server.
+
+#### 8) Run the Agent
 
 Running the Agent is as simple as going to the **agents** directory and running the command `python random_agent.py` in Git Bash.
 
