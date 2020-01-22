@@ -27,7 +27,7 @@ A guide to do this can be found here: https://help.github.com/en/github/authenti
 
 #### 4) Clone the GitHub Repository
 
-`git clone git@github.com:JCPyron/DungeonCrawler.git`
+`git clone https://git@github.com:JCPyron/DungeonCrawler.git`
 
 #### 5) Copy all the files in the "ServerFiles" folder to the home directory
 
