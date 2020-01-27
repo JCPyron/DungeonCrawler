@@ -30,6 +30,12 @@ class Interact:
         self.stderr.close()
         self.client.close()
 
+    # sends the given json command and returns the result
+    def send_command(self, send_str):
+        send_data = json.dumps(send_str).encode('utf_8')
+        self.stdin.write(send_data)
+        return self.read_out()
+
     # reads from stdout
     # reads one character at a time because the server ends response with null character, not EOF
     def read_out(self):
@@ -53,9 +59,7 @@ class Interact:
     # authenticate with the server
     def auth(self, username, password, email):
         auth_str = {"auth": {"username": username, "password": password, "email": "NULL"}}
-        send_data = json.dumps(auth_str).encode('utf_8')
-        self.stdin.write(send_data)
-        server_response = self.read_out()
+        server_response = self.send_command(auth_str)
         if server_response["auth"]["return"] == 3:
             return True
         # if the user was not found, registers the user
@@ -67,13 +71,15 @@ class Interact:
     # registers the user with the server
     def register(self, username, password, email):
         reg_str = {"register": {"username": username, "password": password, "email": email}}
-        send_data = json.dumps(reg_str).encode('utf_8')
-        self.stdin.write(send_data)
-
-        server_response = self.read_out()
+        server_response = self.send_command(reg_str)
         if server_response["register"]["return"] == 3:
             return True
         return False
+
+    # creates the game instance
+    def create_game(self):
+        create_str = ""
+        server_response = self.send_command(create_str)
 
     # begins the game - WARNING!!!!: INCOMPLETE
     def start_game(self):
