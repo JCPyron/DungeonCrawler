@@ -2,18 +2,41 @@
 
 ## Table of contents
 1. [Documentation](#doc)
-    1. [Setting up the game server](#server)
-    2. [Installing the Crawler](#crawl)
-    3. [Creating more actions](#act)
+    1. [Connecting to the AWS instance](#connect)
+    2. [Setting up the game server](#server)
+    3. [Installing the Crawler](#crawl)
+    4. [Creating more actions](#act)
 3. [Resources](#resources)
 
 
 ## Documentation <a name="doc"></a>
 The Dungeon Crawlers decided to use NetHack4 as the open source code for their project because the game functions very similar to NetHack, and it's much more readable.
 
-### Setting up the game server <a name="server"></a>
+### Connecting to AWS <a name="connect"></a>
+#### 1) Clone the GitHub Repository to get the .pem or .pkk file
+This can be done a variety of ways. The preferred method is to install GitBash (https://git-scm.com/downloads) and run the following command:
+`git clone https://git@github.com:JCPyron/DungeonCrawler.git`
 
-#### 1) Spin up the AWS instance (or any server of your choice)
+#### Windows
+install putty
+Go to Connection>SSH>Auth
+click browse and select the .pkk file
+Go back to Session
+Hostname should be:  ubuntu@ec2-34-229-53-61.compute-1.amazonaws.com
+Port: 22
+Connection Type: SSH
+Type in a name for "Saved Sessions" and Click Save. That'll keep you from having to do all this again
+click open then yes
+
+#### Linux
+run the following command:
+`ssh -i "NetCrawler.pem" ubuntu@ec2-34-229-53-61.compute-1.amazonaws.com`
+
+
+
+### Setting up the game server - You only have to do this once <a name="server"></a>
+
+#### 1) Spin up the AWS instance (or any server of your choice) if needed
 
 The guide to set up an AWS instance can be found here: https://aws.amazon.com/ec2/getting-started/
 
@@ -60,9 +83,11 @@ CREATE EXTENSION pgcrypto;
 `./startServer`
 
 
+
+
 ### Installation of DungeonCrawler (For Windows)<a name="crawl"></a>
 
-#### 1) Install  Python
+#### 1) Install  Python3
 
 Newest version can be found at: https://www.python.org/downloads/
 
@@ -72,7 +97,7 @@ Newest version can be found at: https://git-scm.com/downloads
 
 #### 3) Add Python to the Path
 
-Open Git Bash and try the `python --version` command. If the command is not found, Python needs to be added to the Path. To do this, use the command `export PATH="$PATH:/c/Program Files/PythonXX"` and replace the quoted in section with the correct file path to Python on your system
+Open Git Bash and try the `python3 --version` command. If the command is not found, Python needs to be added to the Path. To do this, use the command `export PATH="$PATH:/c/Program Files/PythonXX"` and replace the quoted in section with the correct file path to Python on your system
 
 ** Note:	Using export will only keep Python on the path for that session of Git Bash. To keep it 	permanently, it will require the editing of .bashrc**
 
@@ -88,9 +113,9 @@ Go the folder you would like to install the DungeonCrawler in Git Bash and clone
 
 In Git Bash, run the following commands in order Pip to install the required decencies for the Agent and Environment:
 ```
-pip install gym
-pip install paramiko
-pip install -e DungeonCrawler
+pip3 install gym
+pip3 install paramiko
+pip3 install -e DungeonCrawler
 ```
 
 #### 7) Update the Config File
@@ -99,7 +124,7 @@ The connection and logon information in the config file must be updated to be ab
 
 #### 8) Run the Agent
 
-Running the Agent is as simple as going to the **agents** directory and running the command `python random_agent.py` in Git Bash.
+Running the Agent is as simple as going to the **agents** directory and running the command `python3 random_agent.py` in Git Bash.
 
 ### Creating more game actions <a name="act"></a>
 
