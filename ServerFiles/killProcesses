@@ -1,0 +1,4 @@
+#! /bin/bash
+for pid in $(ps -ef | awk '/^ubuntu\s*[0-9]*.*startServer$/ {print $2}'); do kill $pid; done
+for pid in $(ps -ef | awk '/^ubuntu\s*[0-9]*.*netdb$/ {print $2}'); do kill $pid; done
+
