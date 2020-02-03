@@ -156,6 +156,12 @@ During development, we tried to keep everything as separated as possible to allo
 ### NetHack4 wiki
 https://nethackwiki.com/wiki/NetHack_4
 
+### NetHack4 JSON Commands Help
+
+http://nethack4.org/latest/nethack4/doc/server_protocol.txt
+
+http://nethack4.org/latest/nethack4/libnethack_common/include/nethack_types.h
+
 ### Reinforcement Learning Articles:
 
 https://skymind.ai/wiki/deep-reinforcement-learning
