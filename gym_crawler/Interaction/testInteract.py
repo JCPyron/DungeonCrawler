@@ -1,7 +1,7 @@
 from Interact import Interact
 
 host = "ec2-34-229-53-61.compute-1.amazonaws.com"
-pem = "/home/jcpyron/NetCrawler.pem"
+pem = "D:\\Docs\\ECE341L\\DungeonCrawler\\agents\\NetCrawler.pem"
 user = "random"
 pwd = "ece431l02"
 email = "NULL"
