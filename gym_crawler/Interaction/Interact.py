@@ -1,5 +1,6 @@
 import paramiko
 import json
+import struct
 
 
 class Interact:
@@ -33,8 +34,15 @@ class Interact:
     # sends the given json command and returns the result
     def send_command(self, send_str):
         send_data = json.dumps(send_str).encode('utf_8')
+        print(send_data)
         self.stdin.write(send_data)
         return self.read_out()
+
+    # a debug method, sends the command and returns from stderr
+    def send_command_read_err(self, send_str):
+        send_data = json.dumps(send_str).encode('utf_8')
+        self.stdin.write(send_data)
+        return self.read_err()
 
     # reads from stdout
     # reads one character at a time because the server ends response with null character, not EOF
@@ -76,10 +84,17 @@ class Interact:
             return True
         return False
 
+    # returns the options struct, can can be changed if desired
+    def get_options(self):
+        opt_str = {"get_options": {}}
+        server_response = self.send_command(opt_str)
+        return server_response
+
     # creates the game instance
     def create_game(self):
-        create_str = ""
-        server_response = self.send_command(create_str)
+        create_str={}
+        server_response = self.send_command_read_err(create_str)
+        return json.dumps(server_response)
 
     # begins the game - WARNING!!!!: INCOMPLETE
     def start_game(self):
