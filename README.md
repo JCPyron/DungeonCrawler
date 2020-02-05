@@ -29,8 +29,7 @@ Type in a name for "Saved Sessions" and Click Save. That'll keep you from having
 click open then yes
 
 #### Linux
-run the following command:
-`ssh -i "NetCrawler.pem" ubuntu@ec2-34-229-53-61.compute-1.amazonaws.com`
+run the following command `ssh -i "NetCrawler.pem" ubuntu@ec2-34-229-53-61.compute-1.amazonaws.com`
 
 
 
@@ -38,40 +37,48 @@ run the following command:
 
 #### 1) Spin up the AWS instance (or any server of your choice) if needed
 
-The guide to set up an AWS instance can be found here: https://aws.amazon.com/ec2/getting-started/
+A guide to set up an Amazon Web Service Server (AWS Server) instance can be found here: https://aws.amazon.com/ec2/getting-started/
 
-#### 2) Install git
+#### 2) Conect to the AWS server
 
-use the command `sudo apt-get install git`
+Connect to the AWS server from your windows or linux client as described in [Connecting to the AWS instance] (#connect)
 
-#### 3) link the AWS git command to your GitHub account for SSH
+#### 3) Install git
 
-A guide to do this can be found here: https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+Once connected to the server, install git. Our server is running Ubuntu 18.04 LTS, so we will use the command `sudo apt-get install git`
 
 #### 4) Clone the GitHub Repository
 
-`git clone https://git@github.com:JCPyron/DungeonCrawler.git`
+Download all necessary files and packages from the GitHub repository to the home directory of server.
+
+First, run `cd ~` in the server's terminal to change directories to the home directory
+
+Next, run `git clone https://git@github.com/JCPyron/DungeonCrawler.git` in the server's terminal to clone the DungeonCrawler GitHub repository.
 
 #### 5) Copy all the files in the "ServerFiles" folder to the home directory
 
-`cp -r ~/DungeonCrawler/ServerFiles/* ~`
+Run `cp -r ~/DungeonCrawler/ServerFiles/* ~` in the server's terminal.
 
 #### 6) Run the setup files
 
-`./setup`
+Set-up server files by running the bash script `./setup` in the server's terminal.
 
 #### 7) Set up the PostgreSQL Database
 
 ```
 sudo adduser nethack
 ```
-*Password is "pass"*
+
+*Input Password as "pass"*
+
 ```
 sudo -u postgres createdb netdb
-sudo -u postgresql createuser --interactive
+sudo -u postgres createuser --interactive
 ```
-*nethack*
-*y*
+
+*Input "nethack" as username*
+
+*Input "y" for yes*
 
 ```
 sudo -u nethack psql -d netdb
@@ -80,12 +87,13 @@ CREATE EXTENSION pgcrypto;
 ```
 
 #### 8) Run the server
-`./startServer`
+
+To start the nethack serivece, run `./startServer` in the server's terminal.
 
 
 
 
-### Installation of DungeonCrawler (For Windows)<a name="crawl"></a>
+### Client side Installation of DungeonCrawler (For Windows)<a name="crawl"></a>
 
 #### 1) Install  Python3
 
@@ -112,15 +120,36 @@ Go the folder you would like to install the DungeonCrawler in Git Bash and clone
 #### 6) Installing Dependencies
 
 In Git Bash, run the following commands in order Pip to install the required decencies for the Agent and Environment:
+
 ```
 pip3 install gym
 pip3 install paramiko
 pip3 install -e DungeonCrawler
 ```
 
+Where DungeonCrawler is the local path to the DungeonCrawler project directory
+
 #### 7) Update the Config File
 
-The connection and logon information in the config file must be updated to be able to connect to you server.
+If needed (i.e. when setting up a new client connection to a new AWS server) update the config file in the **agents** directory of the DungeonCrawler project directory of the client with the connection and logon information of the AWS server with server information (i.e. fields under [Connect] and [Host] as seen below)
+
+```
+; Connect to AWS Server
+[Connect]
+host=ec2-34-229-53-61.compute-1.amazonaws.com 
+user=ubuntu
+key_path=NetCrawler.pem
+
+; NetHack Logon
+[Logon]
+user=random
+password=ece431l02
+email=NULL
+
+; Options for the Game
+[Options]
+game_seed=012345678901234
+```
 
 #### 8) Run the Agent
 
@@ -142,6 +171,7 @@ def register(self, username, password, email):
         return True
     return False
 ```
+
 The method creates a JSON object with the fields and their values (provided by the Wiki), uses the json.dumps command to write the command to a string and encodes it to utf-8. The command is then written to stdin and the server response is read. If it was successful, it returns True.
 
 All commands will look similar to this method. They should create a JSON object with the proper fields and then write to stdin. The largest problem with the server is that it shuts down after a command is received that is improperly formatted.
@@ -150,10 +180,10 @@ For implementation, when the agent decides it wants to preform a specific action
 
 During development, we tried to keep everything as separated as possible to allow for individual, concurrent development. It also allows the code to be easily improved and developed.
 
-
 ## Resources <a name="resources"></a>
 
 ### NetHack4 wiki
+
 https://nethackwiki.com/wiki/NetHack_4
 
 ### Reinforcement Learning Articles:
