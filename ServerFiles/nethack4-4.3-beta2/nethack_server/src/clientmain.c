@@ -301,25 +301,32 @@ client_main_loop(void)
     const char *key;
     void *iter;
     int i;
-
+    log_msg("client_main_loop executed");
     while (!termination_flag) {
+        log_msg("reading from input");
         obj = read_input();
         if (termination_flag) {
+            log_msg("read termination flag");
             if (obj)
                 json_decref(obj);
             return;
         }
+        log_msg("updateing user ts");
         db_update_user_ts(user_info.uid);
 
         iter = json_object_iter(obj);
         if (!iter)
             exit_client("Empty command object received.", 0);
 
+        log_msg("looking for the function to call");
+
         /* find a command function to call */
         key = json_object_iter_key(iter);
         value = json_object_iter_value(iter);
         for (i = 0; clientcmd[i].name; i++)
-            if (!strcmp(clientcmd[i].name, key)) {
+            log_msg("comparing %s and %s",clientcmd[i].name,key);
+            if (!strcmp(clientcmd[i].name, key)){
+                log_msg("%s cmd found, running...",key);
                 clientcmd[i].func(value);
                 break;
             }
@@ -348,6 +355,7 @@ client_main_loop(void)
 noreturn void
 client_main(int userid, int _infd, int _outfd)
 {
+    log_msg("client_main started");
     char **gamepaths;
     int i;
 
