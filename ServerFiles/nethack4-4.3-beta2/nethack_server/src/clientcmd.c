@@ -178,7 +178,7 @@ ccmd_create_game(json_t * params)
     json_t *j_msg, *jarr, *jobj;
     int fd, ret, count, i, debug = 0;
     long t;
-
+    log_msg("create_game command received");
     if (json_unpack (params, "{so!}", "options", &jarr) == -1 ||
         !json_is_array(jarr))
         exit_client("Bad set of parameters for create_game", 0);
@@ -226,8 +226,9 @@ ccmd_create_game(json_t * params)
                 "not be opened", user_info.username, gameid, name);
         exit_client("Could not create the logfile", SIGABRT);
     }
-
+    log_msg("create_game JSON well formatted, creating game");
     ret = nh_create_game(fd, opts);
+    log_msg("game created");
     close(fd);
 
     if (ret == NHCREATE_OK) {
