@@ -12,9 +12,11 @@ class Interact:
     stdout = ''
     stderr = ''
     client = ''
+    options_json = ''
 
     # init connection and get file descriptors
     def __init__(self, hostname, username, key_path):
+        self.options_json = json.loads(''.join(open("options.json").readlines()))
         self.hostname = hostname
         self.username = username
         self.key = paramiko.RSAKey.from_private_key_file(key_path)
@@ -34,14 +36,13 @@ class Interact:
     # sends the given json command and returns the result
     def send_command(self, send_str):
         send_data = json.dumps(send_str).encode('utf_8')
-        print(send_data)
         self.stdin.write(send_data)
         return self.read_out()
 
     # a debug method, sends the command and returns from stderr
     def send_command_read_err(self, send_str):
         send_data = json.dumps(send_str).encode('utf_8')
-        self.stdin.write(send_data)
+        self.stdin.write(send_data + b'\n')
         return self.read_err()
 
     # reads from stdout
@@ -86,14 +87,27 @@ class Interact:
 
     # returns the options struct, can can be changed if desired
     def get_options(self):
-        opt_str = {"get_options": {}}
-        server_response = self.send_command(opt_str)
+        opt_str = {'get_options': {}}
+        server_response = self.send_command_read_err(opt_str)
         return server_response
 
     # creates the game instance
-    def create_game(self):
-        create_str={}
-        server_response = self.send_command_read_err(create_str)
+    def create_game(self, seed='', name='ken', role=-2, race=-2, align=-2, gender=-2):
+        for option in self.options_json["options"]:
+            if option["name"] == 'seed':
+                option["value"] = seed
+            elif option["name"] == 'name':
+                option["value"] = name
+            elif option["name"] == 'role':
+                option["value"] = role
+            elif option["name"] == 'race':
+                option["value"] = race
+            elif option["name"] == 'alignment':
+                option["value"] = align
+            elif option["name"] == 'gender':
+                option["value"] = gender
+        create_str = {"create_game": self.options_json}
+        server_response = self.send_command(create_str)
         return json.dumps(server_response)
 
     # begins the game - WARNING!!!!: INCOMPLETE

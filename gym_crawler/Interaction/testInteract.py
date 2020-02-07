@@ -9,7 +9,7 @@ console = Interact(host, "ubuntu", pem)
 
 # {"auth": {"username": "random", "password": "ece431l02", "email": "NULL"}}
 
-while input("Continue (Y/N)? ").upper() == "Y":
+while input("Continue (Y/N)? ").upper() != "N":
     cmd = input("Enter Command: ").lower().strip()
     if cmd == "auth":
         print(console.auth(user, pwd, email))

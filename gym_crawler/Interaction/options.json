@@ -1,0 +1,2222 @@
+{
+  "options": [
+    {
+      "name": "autodig",
+      "helptxt": "dig if moving and wielding digging tool",
+      "value": 0,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "autodigdown",
+      "helptxt": "autodig downwards tries to create a pit or hole",
+      "value": 0,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "autopickup",
+      "helptxt": "automatically pick up objects you move over",
+      "value": 1,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "autopickup_rules",
+      "helptxt": "rules to decide what to autopickup if autopickup is on",
+      "value": [
+        {
+          "oclass": 97,
+          "pattern": "*zorkmid*",
+          "action": 1,
+          "buc": 4
+        },
+        {
+          "oclass": 36,
+          "pattern": "",
+          "action": 0,
+          "buc": 4
+        },
+        {
+          "oclass": 63,
+          "pattern": "",
+          "action": 0,
+          "buc": 4
+        },
+        {
+          "oclass": 61,
+          "pattern": "",
+          "action": 0,
+          "buc": 4
+        },
+        {
+          "oclass": 47,
+          "pattern": "",
+          "action": 0,
+          "buc": 4
+        },
+        {
+          "oclass": 33,
+          "pattern": "",
+          "action": 0,
+          "buc": 4
+        }
+      ],
+      "desc": [
+        {
+          "id": 97,
+          "txt": "any"
+        },
+        {
+          "id": 36,
+          "txt": "gold"
+        },
+        {
+          "id": 34,
+          "txt": "amulets"
+        },
+        {
+          "id": 41,
+          "txt": "weapons"
+        },
+        {
+          "id": 91,
+          "txt": "armor"
+        },
+        {
+          "id": 61,
+          "txt": "rings"
+        },
+        {
+          "id": 40,
+          "txt": "tools"
+        },
+        {
+          "id": 37,
+          "txt": "food"
+        },
+        {
+          "id": 33,
+          "txt": "potions"
+        },
+        {
+          "id": 63,
+          "txt": "scrolls"
+        },
+        {
+          "id": 43,
+          "txt": "spellbooks"
+        },
+        {
+          "id": 47,
+          "txt": "wands"
+        },
+        {
+          "id": 42,
+          "txt": "gems"
+        },
+        {
+          "id": 96,
+          "txt": "large stones"
+        },
+        {
+          "id": 48,
+          "txt": "iron balls"
+        },
+        {
+          "id": 95,
+          "txt": "chains"
+        }
+      ],
+      "type": 4,
+      "birth": false
+    },
+    {
+      "name": "autoquiver",
+      "helptxt": "when firing with an empty quiver, select something suitable",
+      "value": 0,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "corridorbranch",
+      "helptxt": "branching corridors do not stop farmove",
+      "value": 1,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "disclose",
+      "helptxt": "whether to disclose information at end of game",
+      "value": 43,
+      "desc": [
+        {
+          "id": 45,
+          "txt": "no"
+        },
+        {
+          "id": 110,
+          "txt": "ask, default no"
+        },
+        {
+          "id": 121,
+          "txt": "ask, default yes"
+        },
+        {
+          "id": 43,
+          "txt": "yes"
+        }
+      ],
+      "type": 2,
+      "birth": false
+    },
+    {
+      "name": "fruit",
+      "helptxt": "the name of a fruit you enjoy eating",
+      "value": "slime mold",
+      "desc": 32,
+      "type": 3,
+      "birth": false
+    },
+    {
+      "name": "menustyle",
+      "helptxt": "user interface for object selection",
+      "value": 3,
+      "desc": [
+        {
+          "id": 2,
+          "txt": "partial"
+        },
+        {
+          "id": 3,
+          "txt": "full"
+        }
+      ],
+      "type": 2,
+      "birth": false
+    },
+    {
+      "name": "movecommand",
+      "helptxt": "what the movement keys do",
+      "value": 6,
+      "desc": [
+        {
+          "id": 0,
+          "txt": "nointeraction"
+        },
+        {
+          "id": 1,
+          "txt": "onlyitems"
+        },
+        {
+          "id": 2,
+          "txt": "displace"
+        },
+        {
+          "id": 3,
+          "txt": "pacifist"
+        },
+        {
+          "id": 4,
+          "txt": "attackonly"
+        },
+        {
+          "id": 5,
+          "txt": "traditional"
+        },
+        {
+          "id": 6,
+          "txt": "standard"
+        },
+        {
+          "id": 7,
+          "txt": "indiscriminate"
+        },
+        {
+          "id": 8,
+          "txt": "forcefight"
+        }
+      ],
+      "type": 2,
+      "birth": false
+    },
+    {
+      "name": "multistage_equip",
+      "helptxt": "equipping items can imply unequipping others",
+      "value": 1,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "packorder",
+      "helptxt": "the inventory order of the items in your pack",
+      "value": "$\")[%?+!=/(*`0_",
+      "desc": 18,
+      "type": 3,
+      "birth": false
+    },
+    {
+      "name": "pickup_burden",
+      "helptxt": "maximum burden picked up before prompt",
+      "value": 2,
+      "desc": [
+        {
+          "id": 0,
+          "txt": "unencumbered"
+        },
+        {
+          "id": 1,
+          "txt": "burdened"
+        },
+        {
+          "id": 2,
+          "txt": "stressed"
+        },
+        {
+          "id": 3,
+          "txt": "strained"
+        },
+        {
+          "id": 4,
+          "txt": "overtaxed"
+        },
+        {
+          "id": 5,
+          "txt": "overloaded"
+        }
+      ],
+      "type": 2,
+      "birth": false
+    },
+    {
+      "name": "pickup_thrown",
+      "helptxt": "autopickup items you threw or fired",
+      "value": 1,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "prayconfirm",
+      "helptxt": "use confirmation prompt when #pray command issued",
+      "value": 0,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "pushweapon",
+      "helptxt": "offhand the old weapon when wielding a new one",
+      "value": 0,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "show_uncursed",
+      "helptxt": "always show uncursed status",
+      "value": 0,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "showrace",
+      "helptxt": "show yourself by your race rather than by role",
+      "value": 0,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "sortpack",
+      "helptxt": "group similar kinds of objects in inventory",
+      "value": 1,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "sparkle",
+      "helptxt": "display sparkly effect for resisted magical attacks",
+      "value": 1,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "tombstone",
+      "helptxt": "print tombstone when you die",
+      "value": 1,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "travel_interrupt",
+      "helptxt": "interrupt travel (_) when a hostile is in sight",
+      "value": 1,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "verbose",
+      "helptxt": "print more commentary during the game",
+      "value": 1,
+      "desc": {},
+      "type": 0,
+      "birth": false
+    },
+    {
+      "name": "name",
+      "helptxt": "character name",
+      "value": "Ken",
+      "desc": 32,
+      "type": 3,
+      "birth": true
+    },
+    {
+      "name": "mode",
+      "helptxt": "game mode",
+      "value": 0,
+      "desc": [
+        {
+          "id": 0,
+          "txt": "normal"
+        },
+        {
+          "id": 1,
+          "txt": "explore"
+        },
+        {
+          "id": 2,
+          "txt": "debug"
+        }
+      ],
+      "type": 2,
+      "birth": true
+    },
+    {
+      "name": "seed",
+      "helptxt": "if nonblank, replay a given dungeon (non-scoring)",
+      "value": "",
+      "desc": 16,
+      "type": 3,
+      "birth": true
+    },
+    {
+      "name": "timezone",
+      "helptxt": "time zone to use for time-dependent effects",
+      "value": 0,
+      "desc": [
+        {
+          "id": 0,
+          "txt": "UTC"
+        },
+        {
+          "id": -43200,
+          "txt": "UTC-1200"
+        },
+        {
+          "id": -42300,
+          "txt": "UTC-1145"
+        },
+        {
+          "id": -41400,
+          "txt": "UTC-1130"
+        },
+        {
+          "id": -40500,
+          "txt": "UTC-1115"
+        },
+        {
+          "id": -39600,
+          "txt": "UTC-1100"
+        },
+        {
+          "id": -38700,
+          "txt": "UTC-1045"
+        },
+        {
+          "id": -37800,
+          "txt": "UTC-1030"
+        },
+        {
+          "id": -36900,
+          "txt": "UTC-1015"
+        },
+        {
+          "id": -36000,
+          "txt": "UTC-1000"
+        },
+        {
+          "id": -35100,
+          "txt": "UTC-0945"
+        },
+        {
+          "id": -34200,
+          "txt": "UTC-0930"
+        },
+        {
+          "id": -33300,
+          "txt": "UTC-0915"
+        },
+        {
+          "id": -32400,
+          "txt": "UTC-0900"
+        },
+        {
+          "id": -31500,
+          "txt": "UTC-0845"
+        },
+        {
+          "id": -30600,
+          "txt": "UTC-0830"
+        },
+        {
+          "id": -29700,
+          "txt": "UTC-0815"
+        },
+        {
+          "id": -28800,
+          "txt": "UTC-0800"
+        },
+        {
+          "id": -27900,
+          "txt": "UTC-0745"
+        },
+        {
+          "id": -27000,
+          "txt": "UTC-0730"
+        },
+        {
+          "id": -26100,
+          "txt": "UTC-0715"
+        },
+        {
+          "id": -25200,
+          "txt": "UTC-0700"
+        },
+        {
+          "id": -24300,
+          "txt": "UTC-0645"
+        },
+        {
+          "id": -23400,
+          "txt": "UTC-0630"
+        },
+        {
+          "id": -22500,
+          "txt": "UTC-0615"
+        },
+        {
+          "id": -21600,
+          "txt": "UTC-0600"
+        },
+        {
+          "id": -20700,
+          "txt": "UTC-0545"
+        },
+        {
+          "id": -19800,
+          "txt": "UTC-0530"
+        },
+        {
+          "id": -18900,
+          "txt": "UTC-0515"
+        },
+        {
+          "id": -18000,
+          "txt": "UTC-0500"
+        },
+        {
+          "id": -17100,
+          "txt": "UTC-0445"
+        },
+        {
+          "id": -16200,
+          "txt": "UTC-0430"
+        },
+        {
+          "id": -15300,
+          "txt": "UTC-0415"
+        },
+        {
+          "id": -14400,
+          "txt": "UTC-0400"
+        },
+        {
+          "id": -13500,
+          "txt": "UTC-0345"
+        },
+        {
+          "id": -12600,
+          "txt": "UTC-0330"
+        },
+        {
+          "id": -11700,
+          "txt": "UTC-0315"
+        },
+        {
+          "id": -10800,
+          "txt": "UTC-0300"
+        },
+        {
+          "id": -9900,
+          "txt": "UTC-0245"
+        },
+        {
+          "id": -9000,
+          "txt": "UTC-0230"
+        },
+        {
+          "id": -8100,
+          "txt": "UTC-0215"
+        },
+        {
+          "id": -7200,
+          "txt": "UTC-0200"
+        },
+        {
+          "id": -6300,
+          "txt": "UTC-0145"
+        },
+        {
+          "id": -5400,
+          "txt": "UTC-0130"
+        },
+        {
+          "id": -4500,
+          "txt": "UTC-0115"
+        },
+        {
+          "id": -3600,
+          "txt": "UTC-0100"
+        },
+        {
+          "id": -2700,
+          "txt": "UTC-0045"
+        },
+        {
+          "id": -1800,
+          "txt": "UTC-0030"
+        },
+        {
+          "id": -900,
+          "txt": "UTC-0015"
+        },
+        {
+          "id": 900,
+          "txt": "UTC+0015"
+        },
+        {
+          "id": 1800,
+          "txt": "UTC+0030"
+        },
+        {
+          "id": 2700,
+          "txt": "UTC+0045"
+        },
+        {
+          "id": 3600,
+          "txt": "UTC+0100"
+        },
+        {
+          "id": 4500,
+          "txt": "UTC+0115"
+        },
+        {
+          "id": 5400,
+          "txt": "UTC+0130"
+        },
+        {
+          "id": 6300,
+          "txt": "UTC+0145"
+        },
+        {
+          "id": 7200,
+          "txt": "UTC+0200"
+        },
+        {
+          "id": 8100,
+          "txt": "UTC+0215"
+        },
+        {
+          "id": 9000,
+          "txt": "UTC+0230"
+        },
+        {
+          "id": 9900,
+          "txt": "UTC+0245"
+        },
+        {
+          "id": 10800,
+          "txt": "UTC+0300"
+        },
+        {
+          "id": 11700,
+          "txt": "UTC+0315"
+        },
+        {
+          "id": 12600,
+          "txt": "UTC+0330"
+        },
+        {
+          "id": 13500,
+          "txt": "UTC+0345"
+        },
+        {
+          "id": 14400,
+          "txt": "UTC+0400"
+        },
+        {
+          "id": 15300,
+          "txt": "UTC+0415"
+        },
+        {
+          "id": 16200,
+          "txt": "UTC+0430"
+        },
+        {
+          "id": 17100,
+          "txt": "UTC+0445"
+        },
+        {
+          "id": 18000,
+          "txt": "UTC+0500"
+        },
+        {
+          "id": 18900,
+          "txt": "UTC+0515"
+        },
+        {
+          "id": 19800,
+          "txt": "UTC+0530"
+        },
+        {
+          "id": 20700,
+          "txt": "UTC+0545"
+        },
+        {
+          "id": 21600,
+          "txt": "UTC+0600"
+        },
+        {
+          "id": 22500,
+          "txt": "UTC+0615"
+        },
+        {
+          "id": 23400,
+          "txt": "UTC+0630"
+        },
+        {
+          "id": 24300,
+          "txt": "UTC+0645"
+        },
+        {
+          "id": 25200,
+          "txt": "UTC+0700"
+        },
+        {
+          "id": 26100,
+          "txt": "UTC+0715"
+        },
+        {
+          "id": 27000,
+          "txt": "UTC+0730"
+        },
+        {
+          "id": 27900,
+          "txt": "UTC+0745"
+        },
+        {
+          "id": 28800,
+          "txt": "UTC+0800"
+        },
+        {
+          "id": 29700,
+          "txt": "UTC+0815"
+        },
+        {
+          "id": 30600,
+          "txt": "UTC+0830"
+        },
+        {
+          "id": 31500,
+          "txt": "UTC+0845"
+        },
+        {
+          "id": 32400,
+          "txt": "UTC+0900"
+        },
+        {
+          "id": 33300,
+          "txt": "UTC+0915"
+        },
+        {
+          "id": 34200,
+          "txt": "UTC+0930"
+        },
+        {
+          "id": 35100,
+          "txt": "UTC+0945"
+        },
+        {
+          "id": 36000,
+          "txt": "UTC+1000"
+        },
+        {
+          "id": 36900,
+          "txt": "UTC+1015"
+        },
+        {
+          "id": 37800,
+          "txt": "UTC+1030"
+        },
+        {
+          "id": 38700,
+          "txt": "UTC+1045"
+        },
+        {
+          "id": 39600,
+          "txt": "UTC+1100"
+        },
+        {
+          "id": 40500,
+          "txt": "UTC+1115"
+        },
+        {
+          "id": 41400,
+          "txt": "UTC+1130"
+        },
+        {
+          "id": 42300,
+          "txt": "UTC+1145"
+        },
+        {
+          "id": 43200,
+          "txt": "UTC+1200"
+        },
+        {
+          "id": 44100,
+          "txt": "UTC+1215"
+        },
+        {
+          "id": 45000,
+          "txt": "UTC+1230"
+        },
+        {
+          "id": 45900,
+          "txt": "UTC+1245"
+        },
+        {
+          "id": 46800,
+          "txt": "UTC+1300"
+        },
+        {
+          "id": 47700,
+          "txt": "UTC+1315"
+        },
+        {
+          "id": 48600,
+          "txt": "UTC+1330"
+        },
+        {
+          "id": 49500,
+          "txt": "UTC+1345"
+        },
+        {
+          "id": 50400,
+          "txt": "UTC+1400"
+        }
+      ],
+      "type": 2,
+      "birth": true
+    },
+    {
+      "name": "elbereth",
+      "helptxt": "difficulty: the E-word repels monsters",
+      "value": 1,
+      "desc": {},
+      "type": 0,
+      "birth": true
+    },
+    {
+      "name": "reincarnation",
+      "helptxt": "Special Rogue-like levels",
+      "value": 1,
+      "desc": {},
+      "type": 0,
+      "birth": true
+    },
+    {
+      "name": "seduction",
+      "helptxt": "certain monsters may seduce you",
+      "value": 1,
+      "desc": {},
+      "type": 0,
+      "birth": true
+    },
+    {
+      "name": "bones",
+      "helptxt": "allow bones levels",
+      "value": 1,
+      "desc": {},
+      "type": 0,
+      "birth": true
+    },
+    {
+      "name": "permablind",
+      "helptxt": "spend the whole game blind",
+      "value": 0,
+      "desc": {},
+      "type": 0,
+      "birth": true
+    },
+    {
+      "name": "permahallu",
+      "helptxt": "spend the whole game hallucinating",
+      "value": 0,
+      "desc": {},
+      "type": 0,
+      "birth": true
+    },
+    {
+      "name": "polyinit",
+      "helptxt": "play in monster form (non-scoring)",
+      "value": -1,
+      "desc": [
+        {
+          "id": -1,
+          "txt": "(off)"
+        },
+        {
+          "id": 0,
+          "txt": "giant ant"
+        },
+        {
+          "id": 1,
+          "txt": "killer bee"
+        },
+        {
+          "id": 2,
+          "txt": "soldier ant"
+        },
+        {
+          "id": 3,
+          "txt": "fire ant"
+        },
+        {
+          "id": 4,
+          "txt": "giant beetle"
+        },
+        {
+          "id": 5,
+          "txt": "queen bee"
+        },
+        {
+          "id": 6,
+          "txt": "acid blob"
+        },
+        {
+          "id": 7,
+          "txt": "quivering blob"
+        },
+        {
+          "id": 8,
+          "txt": "gelatinous cube"
+        },
+        {
+          "id": 9,
+          "txt": "chickatrice"
+        },
+        {
+          "id": 10,
+          "txt": "cockatrice"
+        },
+        {
+          "id": 11,
+          "txt": "pyrolisk"
+        },
+        {
+          "id": 12,
+          "txt": "jackal"
+        },
+        {
+          "id": 13,
+          "txt": "fox"
+        },
+        {
+          "id": 14,
+          "txt": "coyote"
+        },
+        {
+          "id": 16,
+          "txt": "little dog"
+        },
+        {
+          "id": 17,
+          "txt": "dog"
+        },
+        {
+          "id": 18,
+          "txt": "large dog"
+        },
+        {
+          "id": 19,
+          "txt": "dingo"
+        },
+        {
+          "id": 20,
+          "txt": "wolf"
+        },
+        {
+          "id": 22,
+          "txt": "warg"
+        },
+        {
+          "id": 23,
+          "txt": "winter wolf cub"
+        },
+        {
+          "id": 24,
+          "txt": "winter wolf"
+        },
+        {
+          "id": 25,
+          "txt": "hell hound pup"
+        },
+        {
+          "id": 26,
+          "txt": "hell hound"
+        },
+        {
+          "id": 27,
+          "txt": "gas spore"
+        },
+        {
+          "id": 28,
+          "txt": "floating eye"
+        },
+        {
+          "id": 29,
+          "txt": "freezing sphere"
+        },
+        {
+          "id": 30,
+          "txt": "flaming sphere"
+        },
+        {
+          "id": 31,
+          "txt": "shocking sphere"
+        },
+        {
+          "id": 32,
+          "txt": "kitten"
+        },
+        {
+          "id": 33,
+          "txt": "housecat"
+        },
+        {
+          "id": 34,
+          "txt": "jaguar"
+        },
+        {
+          "id": 35,
+          "txt": "lynx"
+        },
+        {
+          "id": 36,
+          "txt": "panther"
+        },
+        {
+          "id": 37,
+          "txt": "large cat"
+        },
+        {
+          "id": 38,
+          "txt": "tiger"
+        },
+        {
+          "id": 39,
+          "txt": "gremlin"
+        },
+        {
+          "id": 40,
+          "txt": "gargoyle"
+        },
+        {
+          "id": 41,
+          "txt": "winged gargoyle"
+        },
+        {
+          "id": 42,
+          "txt": "hobbit"
+        },
+        {
+          "id": 44,
+          "txt": "bugbear"
+        },
+        {
+          "id": 45,
+          "txt": "dwarf lord"
+        },
+        {
+          "id": 46,
+          "txt": "dwarf king"
+        },
+        {
+          "id": 47,
+          "txt": "mind flayer"
+        },
+        {
+          "id": 48,
+          "txt": "master mind flayer"
+        },
+        {
+          "id": 49,
+          "txt": "manes"
+        },
+        {
+          "id": 50,
+          "txt": "homunculus"
+        },
+        {
+          "id": 51,
+          "txt": "imp"
+        },
+        {
+          "id": 52,
+          "txt": "lemure"
+        },
+        {
+          "id": 53,
+          "txt": "quasit"
+        },
+        {
+          "id": 54,
+          "txt": "tengu"
+        },
+        {
+          "id": 55,
+          "txt": "blue jelly"
+        },
+        {
+          "id": 56,
+          "txt": "spotted jelly"
+        },
+        {
+          "id": 57,
+          "txt": "ochre jelly"
+        },
+        {
+          "id": 58,
+          "txt": "kobold"
+        },
+        {
+          "id": 59,
+          "txt": "large kobold"
+        },
+        {
+          "id": 60,
+          "txt": "kobold lord"
+        },
+        {
+          "id": 61,
+          "txt": "kobold shaman"
+        },
+        {
+          "id": 62,
+          "txt": "leprechaun"
+        },
+        {
+          "id": 63,
+          "txt": "small mimic"
+        },
+        {
+          "id": 64,
+          "txt": "large mimic"
+        },
+        {
+          "id": 65,
+          "txt": "giant mimic"
+        },
+        {
+          "id": 66,
+          "txt": "wood nymph"
+        },
+        {
+          "id": 67,
+          "txt": "water nymph"
+        },
+        {
+          "id": 68,
+          "txt": "mountain nymph"
+        },
+        {
+          "id": 69,
+          "txt": "goblin"
+        },
+        {
+          "id": 70,
+          "txt": "hobgoblin"
+        },
+        {
+          "id": 72,
+          "txt": "hill orc"
+        },
+        {
+          "id": 73,
+          "txt": "Mordor orc"
+        },
+        {
+          "id": 74,
+          "txt": "Uruk-hai"
+        },
+        {
+          "id": 75,
+          "txt": "orc shaman"
+        },
+        {
+          "id": 76,
+          "txt": "orc-captain"
+        },
+        {
+          "id": 77,
+          "txt": "rock piercer"
+        },
+        {
+          "id": 78,
+          "txt": "iron piercer"
+        },
+        {
+          "id": 79,
+          "txt": "glass piercer"
+        },
+        {
+          "id": 80,
+          "txt": "rothe"
+        },
+        {
+          "id": 81,
+          "txt": "mumak"
+        },
+        {
+          "id": 82,
+          "txt": "leocrotta"
+        },
+        {
+          "id": 83,
+          "txt": "wumpus"
+        },
+        {
+          "id": 84,
+          "txt": "titanothere"
+        },
+        {
+          "id": 85,
+          "txt": "baluchitherium"
+        },
+        {
+          "id": 86,
+          "txt": "mastodon"
+        },
+        {
+          "id": 87,
+          "txt": "sewer rat"
+        },
+        {
+          "id": 88,
+          "txt": "giant rat"
+        },
+        {
+          "id": 89,
+          "txt": "rabid rat"
+        },
+        {
+          "id": 91,
+          "txt": "rock mole"
+        },
+        {
+          "id": 92,
+          "txt": "woodchuck"
+        },
+        {
+          "id": 93,
+          "txt": "cave spider"
+        },
+        {
+          "id": 94,
+          "txt": "centipede"
+        },
+        {
+          "id": 95,
+          "txt": "giant spider"
+        },
+        {
+          "id": 96,
+          "txt": "scorpion"
+        },
+        {
+          "id": 97,
+          "txt": "lurker above"
+        },
+        {
+          "id": 98,
+          "txt": "trapper"
+        },
+        {
+          "id": 99,
+          "txt": "white unicorn"
+        },
+        {
+          "id": 100,
+          "txt": "gray unicorn"
+        },
+        {
+          "id": 101,
+          "txt": "black unicorn"
+        },
+        {
+          "id": 102,
+          "txt": "pony"
+        },
+        {
+          "id": 103,
+          "txt": "horse"
+        },
+        {
+          "id": 104,
+          "txt": "warhorse"
+        },
+        {
+          "id": 105,
+          "txt": "fog cloud"
+        },
+        {
+          "id": 106,
+          "txt": "dust vortex"
+        },
+        {
+          "id": 107,
+          "txt": "ice vortex"
+        },
+        {
+          "id": 108,
+          "txt": "energy vortex"
+        },
+        {
+          "id": 109,
+          "txt": "steam vortex"
+        },
+        {
+          "id": 110,
+          "txt": "fire vortex"
+        },
+        {
+          "id": 111,
+          "txt": "baby long worm"
+        },
+        {
+          "id": 112,
+          "txt": "baby purple worm"
+        },
+        {
+          "id": 113,
+          "txt": "long worm"
+        },
+        {
+          "id": 114,
+          "txt": "purple worm"
+        },
+        {
+          "id": 115,
+          "txt": "grid bug"
+        },
+        {
+          "id": 116,
+          "txt": "xan"
+        },
+        {
+          "id": 117,
+          "txt": "yellow light"
+        },
+        {
+          "id": 118,
+          "txt": "black light"
+        },
+        {
+          "id": 119,
+          "txt": "zruty"
+        },
+        {
+          "id": 120,
+          "txt": "couatl"
+        },
+        {
+          "id": 121,
+          "txt": "Aleax"
+        },
+        {
+          "id": 125,
+          "txt": "bat"
+        },
+        {
+          "id": 126,
+          "txt": "giant bat"
+        },
+        {
+          "id": 127,
+          "txt": "raven"
+        },
+        {
+          "id": 128,
+          "txt": "vampire bat"
+        },
+        {
+          "id": 129,
+          "txt": "plains centaur"
+        },
+        {
+          "id": 130,
+          "txt": "forest centaur"
+        },
+        {
+          "id": 131,
+          "txt": "mountain centaur"
+        },
+        {
+          "id": 132,
+          "txt": "baby gray dragon"
+        },
+        {
+          "id": 133,
+          "txt": "baby silver dragon"
+        },
+        {
+          "id": 134,
+          "txt": "baby red dragon"
+        },
+        {
+          "id": 135,
+          "txt": "baby white dragon"
+        },
+        {
+          "id": 136,
+          "txt": "baby orange dragon"
+        },
+        {
+          "id": 137,
+          "txt": "baby black dragon"
+        },
+        {
+          "id": 138,
+          "txt": "baby blue dragon"
+        },
+        {
+          "id": 139,
+          "txt": "baby green dragon"
+        },
+        {
+          "id": 140,
+          "txt": "baby yellow dragon"
+        },
+        {
+          "id": 141,
+          "txt": "gray dragon"
+        },
+        {
+          "id": 142,
+          "txt": "silver dragon"
+        },
+        {
+          "id": 143,
+          "txt": "red dragon"
+        },
+        {
+          "id": 144,
+          "txt": "white dragon"
+        },
+        {
+          "id": 145,
+          "txt": "orange dragon"
+        },
+        {
+          "id": 146,
+          "txt": "black dragon"
+        },
+        {
+          "id": 147,
+          "txt": "blue dragon"
+        },
+        {
+          "id": 148,
+          "txt": "green dragon"
+        },
+        {
+          "id": 149,
+          "txt": "yellow dragon"
+        },
+        {
+          "id": 150,
+          "txt": "stalker"
+        },
+        {
+          "id": 151,
+          "txt": "air elemental"
+        },
+        {
+          "id": 152,
+          "txt": "fire elemental"
+        },
+        {
+          "id": 153,
+          "txt": "earth elemental"
+        },
+        {
+          "id": 154,
+          "txt": "water elemental"
+        },
+        {
+          "id": 155,
+          "txt": "lichen"
+        },
+        {
+          "id": 156,
+          "txt": "brown mold"
+        },
+        {
+          "id": 157,
+          "txt": "yellow mold"
+        },
+        {
+          "id": 158,
+          "txt": "green mold"
+        },
+        {
+          "id": 159,
+          "txt": "red mold"
+        },
+        {
+          "id": 160,
+          "txt": "shrieker"
+        },
+        {
+          "id": 161,
+          "txt": "violet fungus"
+        },
+        {
+          "id": 163,
+          "txt": "gnome lord"
+        },
+        {
+          "id": 164,
+          "txt": "gnomish wizard"
+        },
+        {
+          "id": 165,
+          "txt": "gnome king"
+        },
+        {
+          "id": 166,
+          "txt": "giant"
+        },
+        {
+          "id": 167,
+          "txt": "stone giant"
+        },
+        {
+          "id": 168,
+          "txt": "hill giant"
+        },
+        {
+          "id": 169,
+          "txt": "fire giant"
+        },
+        {
+          "id": 170,
+          "txt": "frost giant"
+        },
+        {
+          "id": 171,
+          "txt": "storm giant"
+        },
+        {
+          "id": 172,
+          "txt": "ettin"
+        },
+        {
+          "id": 173,
+          "txt": "titan"
+        },
+        {
+          "id": 174,
+          "txt": "minotaur"
+        },
+        {
+          "id": 175,
+          "txt": "jabberwock"
+        },
+        {
+          "id": 176,
+          "txt": "Keystone Kop"
+        },
+        {
+          "id": 177,
+          "txt": "Kop Sergeant"
+        },
+        {
+          "id": 178,
+          "txt": "Kop Lieutenant"
+        },
+        {
+          "id": 179,
+          "txt": "Kop Kaptain"
+        },
+        {
+          "id": 180,
+          "txt": "lich"
+        },
+        {
+          "id": 181,
+          "txt": "demilich"
+        },
+        {
+          "id": 182,
+          "txt": "master lich"
+        },
+        {
+          "id": 183,
+          "txt": "arch-lich"
+        },
+        {
+          "id": 184,
+          "txt": "kobold mummy"
+        },
+        {
+          "id": 185,
+          "txt": "gnome mummy"
+        },
+        {
+          "id": 186,
+          "txt": "orc mummy"
+        },
+        {
+          "id": 187,
+          "txt": "dwarf mummy"
+        },
+        {
+          "id": 188,
+          "txt": "elf mummy"
+        },
+        {
+          "id": 189,
+          "txt": "human mummy"
+        },
+        {
+          "id": 190,
+          "txt": "ettin mummy"
+        },
+        {
+          "id": 191,
+          "txt": "giant mummy"
+        },
+        {
+          "id": 192,
+          "txt": "red naga hatchling"
+        },
+        {
+          "id": 193,
+          "txt": "black naga hatchling"
+        },
+        {
+          "id": 194,
+          "txt": "golden naga hatchling"
+        },
+        {
+          "id": 195,
+          "txt": "guardian naga hatchling"
+        },
+        {
+          "id": 196,
+          "txt": "red naga"
+        },
+        {
+          "id": 197,
+          "txt": "black naga"
+        },
+        {
+          "id": 198,
+          "txt": "golden naga"
+        },
+        {
+          "id": 199,
+          "txt": "guardian naga"
+        },
+        {
+          "id": 200,
+          "txt": "ogre"
+        },
+        {
+          "id": 201,
+          "txt": "ogre lord"
+        },
+        {
+          "id": 202,
+          "txt": "ogre king"
+        },
+        {
+          "id": 203,
+          "txt": "gray ooze"
+        },
+        {
+          "id": 204,
+          "txt": "brown pudding"
+        },
+        {
+          "id": 205,
+          "txt": "black pudding"
+        },
+        {
+          "id": 206,
+          "txt": "green slime"
+        },
+        {
+          "id": 207,
+          "txt": "quantum mechanic"
+        },
+        {
+          "id": 208,
+          "txt": "rust monster"
+        },
+        {
+          "id": 209,
+          "txt": "disenchanter"
+        },
+        {
+          "id": 210,
+          "txt": "garter snake"
+        },
+        {
+          "id": 211,
+          "txt": "snake"
+        },
+        {
+          "id": 212,
+          "txt": "water moccasin"
+        },
+        {
+          "id": 213,
+          "txt": "pit viper"
+        },
+        {
+          "id": 214,
+          "txt": "python"
+        },
+        {
+          "id": 215,
+          "txt": "cobra"
+        },
+        {
+          "id": 216,
+          "txt": "troll"
+        },
+        {
+          "id": 217,
+          "txt": "ice troll"
+        },
+        {
+          "id": 218,
+          "txt": "rock troll"
+        },
+        {
+          "id": 219,
+          "txt": "water troll"
+        },
+        {
+          "id": 220,
+          "txt": "Olog-hai"
+        },
+        {
+          "id": 221,
+          "txt": "umber hulk"
+        },
+        {
+          "id": 222,
+          "txt": "vampire"
+        },
+        {
+          "id": 223,
+          "txt": "vampire lord"
+        },
+        {
+          "id": 225,
+          "txt": "barrow wight"
+        },
+        {
+          "id": 226,
+          "txt": "wraith"
+        },
+        {
+          "id": 230,
+          "txt": "xorn"
+        },
+        {
+          "id": 231,
+          "txt": "monkey"
+        },
+        {
+          "id": 232,
+          "txt": "ape"
+        },
+        {
+          "id": 233,
+          "txt": "owlbear"
+        },
+        {
+          "id": 234,
+          "txt": "yeti"
+        },
+        {
+          "id": 235,
+          "txt": "carnivorous ape"
+        },
+        {
+          "id": 236,
+          "txt": "sasquatch"
+        },
+        {
+          "id": 237,
+          "txt": "kobold zombie"
+        },
+        {
+          "id": 238,
+          "txt": "gnome zombie"
+        },
+        {
+          "id": 239,
+          "txt": "orc zombie"
+        },
+        {
+          "id": 240,
+          "txt": "dwarf zombie"
+        },
+        {
+          "id": 241,
+          "txt": "elf zombie"
+        },
+        {
+          "id": 242,
+          "txt": "human zombie"
+        },
+        {
+          "id": 243,
+          "txt": "ettin zombie"
+        },
+        {
+          "id": 244,
+          "txt": "giant zombie"
+        },
+        {
+          "id": 245,
+          "txt": "ghoul"
+        },
+        {
+          "id": 246,
+          "txt": "skeleton"
+        },
+        {
+          "id": 247,
+          "txt": "straw golem"
+        },
+        {
+          "id": 248,
+          "txt": "paper golem"
+        },
+        {
+          "id": 249,
+          "txt": "rope golem"
+        },
+        {
+          "id": 250,
+          "txt": "gold golem"
+        },
+        {
+          "id": 251,
+          "txt": "leather golem"
+        },
+        {
+          "id": 252,
+          "txt": "wood golem"
+        },
+        {
+          "id": 253,
+          "txt": "flesh golem"
+        },
+        {
+          "id": 254,
+          "txt": "clay golem"
+        },
+        {
+          "id": 255,
+          "txt": "stone golem"
+        },
+        {
+          "id": 256,
+          "txt": "glass golem"
+        },
+        {
+          "id": 257,
+          "txt": "iron golem"
+        },
+        {
+          "id": 263,
+          "txt": "Woodland-elf"
+        },
+        {
+          "id": 264,
+          "txt": "Green-elf"
+        },
+        {
+          "id": 265,
+          "txt": "Grey-elf"
+        },
+        {
+          "id": 266,
+          "txt": "elf-lord"
+        },
+        {
+          "id": 267,
+          "txt": "Elvenking"
+        },
+        {
+          "id": 286,
+          "txt": "horned devil"
+        },
+        {
+          "id": 287,
+          "txt": "succubus"
+        },
+        {
+          "id": 288,
+          "txt": "incubus"
+        },
+        {
+          "id": 290,
+          "txt": "barbed devil"
+        },
+        {
+          "id": 291,
+          "txt": "marilith"
+        },
+        {
+          "id": 292,
+          "txt": "vrock"
+        },
+        {
+          "id": 293,
+          "txt": "hezrou"
+        },
+        {
+          "id": 294,
+          "txt": "bone devil"
+        },
+        {
+          "id": 295,
+          "txt": "ice devil"
+        },
+        {
+          "id": 296,
+          "txt": "nalfeshnee"
+        },
+        {
+          "id": 297,
+          "txt": "pit fiend"
+        },
+        {
+          "id": 298,
+          "txt": "balrog"
+        },
+        {
+          "id": 312,
+          "txt": "jellyfish"
+        },
+        {
+          "id": 313,
+          "txt": "piranha"
+        },
+        {
+          "id": 314,
+          "txt": "shark"
+        },
+        {
+          "id": 315,
+          "txt": "giant eel"
+        },
+        {
+          "id": 316,
+          "txt": "electric eel"
+        },
+        {
+          "id": 318,
+          "txt": "newt"
+        },
+        {
+          "id": 319,
+          "txt": "gecko"
+        },
+        {
+          "id": 320,
+          "txt": "iguana"
+        },
+        {
+          "id": 321,
+          "txt": "baby crocodile"
+        },
+        {
+          "id": 322,
+          "txt": "lizard"
+        },
+        {
+          "id": 324,
+          "txt": "crocodile"
+        },
+        {
+          "id": 325,
+          "txt": "salamander"
+        }
+      ],
+      "type": 2,
+      "birth": true
+    },
+    {
+      "name": "legacy",
+      "helptxt": "print introductory message",
+      "value": 1,
+      "desc": {},
+      "type": 0,
+      "birth": true
+    },
+    {
+      "name": "align",
+      "helptxt": "your starting alignment",
+      "value": -2,
+      "desc": [
+        {
+          "id": 0,
+          "txt": "lawful"
+        },
+        {
+          "id": 1,
+          "txt": "neutral"
+        },
+        {
+          "id": 2,
+          "txt": "chaotic"
+        },
+        {
+          "id": -1,
+          "txt": "ask"
+        },
+        {
+          "id": -2,
+          "txt": "random"
+        }
+      ],
+      "type": 2,
+      "birth": true
+    },
+    {
+      "name": "gender",
+      "helptxt": "your starting gender",
+      "value": -2,
+      "desc": [
+        {
+          "id": 0,
+          "txt": "male"
+        },
+        {
+          "id": 1,
+          "txt": "female"
+        },
+        {
+          "id": -1,
+          "txt": "ask"
+        },
+        {
+          "id": -2,
+          "txt": "random"
+        }
+      ],
+      "type": 2,
+      "birth": true
+    },
+    {
+      "name": "race",
+      "helptxt": "your starting race",
+      "value": -2,
+      "desc": [
+        {
+          "id": 0,
+          "txt": "human"
+        },
+        {
+          "id": 1,
+          "txt": "elf"
+        },
+        {
+          "id": 2,
+          "txt": "dwarf"
+        },
+        {
+          "id": 3,
+          "txt": "gnome"
+        },
+        {
+          "id": 4,
+          "txt": "orc"
+        },
+        {
+          "id": -1,
+          "txt": "ask"
+        },
+        {
+          "id": -2,
+          "txt": "random"
+        }
+      ],
+      "type": 2,
+      "birth": true
+    },
+    {
+      "name": "role",
+      "helptxt": "your starting role",
+      "value": -2,
+      "desc": [
+        {
+          "id": 0,
+          "txt": "Archeologist"
+        },
+        {
+          "id": 1,
+          "txt": "Barbarian"
+        },
+        {
+          "id": 2,
+          "txt": "Caveman"
+        },
+        {
+          "id": 3,
+          "txt": "Healer"
+        },
+        {
+          "id": 4,
+          "txt": "Knight"
+        },
+        {
+          "id": 5,
+          "txt": "Monk"
+        },
+        {
+          "id": 6,
+          "txt": "Priest"
+        },
+        {
+          "id": 7,
+          "txt": "Rogue"
+        },
+        {
+          "id": 8,
+          "txt": "Ranger"
+        },
+        {
+          "id": 9,
+          "txt": "Samurai"
+        },
+        {
+          "id": 10,
+          "txt": "Tourist"
+        },
+        {
+          "id": 11,
+          "txt": "Valkyrie"
+        },
+        {
+          "id": 12,
+          "txt": "Wizard"
+        },
+        {
+          "id": -1,
+          "txt": "ask"
+        },
+        {
+          "id": -2,
+          "txt": "random"
+        }
+      ],
+      "type": 2,
+      "birth": true
+    },
+    {
+      "name": "catname",
+      "helptxt": "the name of your (first) cat",
+      "value": "",
+      "desc": 63,
+      "type": 3,
+      "birth": true
+    },
+    {
+      "name": "dogname",
+      "helptxt": "the name of your (first) dog",
+      "value": "",
+      "desc": 63,
+      "type": 3,
+      "birth": true
+    },
+    {
+      "name": "horsename",
+      "helptxt": "the name of your (first) horse",
+      "value": "",
+      "desc": 63,
+      "type": 3,
+      "birth": true
+    },
+    {
+      "name": "pettype",
+      "helptxt": "your preferred initial pet type",
+      "value": 0,
+      "desc": [
+        {
+          "id": 99,
+          "txt": "cat"
+        },
+        {
+          "id": 100,
+          "txt": "dog"
+        },
+        {
+          "id": 104,
+          "txt": "horse"
+        },
+        {
+          "id": 110,
+          "txt": "no pet"
+        },
+        {
+          "id": 0,
+          "txt": "random"
+        }
+      ],
+      "type": 2,
+      "birth": true
+    }
+  ]
+}
