@@ -1,7 +1,9 @@
 from Interact import Interact
 
-host = "ec2-34-229-53-61.compute-1.amazonaws.com"
-pem = "D:\\Docs\\ECE341L\\DungeonCrawler\\agents\\NetCrawler.pem"
+host = "ec2-54-86-115-196S.compute-1.amazonaws.com"
+pem  = "NetCrawler.pem"
+#JC - Path
+#pem = "D:\\Docs\\ECE341L\\DungeonCrawler\\agents\\NetCrawler.pem"
 user = "random"
 pwd = "ece431l02"
 email = "NULL"
