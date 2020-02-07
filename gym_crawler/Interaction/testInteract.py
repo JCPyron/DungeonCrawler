@@ -1,6 +1,6 @@
 from Interact import Interact
 
-host = "ec2-54-86-115-196S.compute-1.amazonaws.com"
+host = "ec2-54-86-115-196.compute-1.amazonaws.com"
 pem  = "NetCrawler.pem"
 #JC - Path
 #pem = "D:\\Docs\\ECE341L\\DungeonCrawler\\agents\\NetCrawler.pem"
