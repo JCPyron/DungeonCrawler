@@ -110,6 +110,12 @@ class Interact:
         server_response = self.send_command(create_str)
         return json.dumps(server_response)
 
+    # Lists which command can be used in "request_command" command
+    def get_commands():
+        get_cmd_str = {"get_commands": {}}
+        server_response = self.send_command(get_cmd_str)
+        print(server_response)
+
     # begins the game - WARNING!!!!: INCOMPLETE
     def start_game(self):
         self.stdin.write('{"get_options":{"list":1}}')
