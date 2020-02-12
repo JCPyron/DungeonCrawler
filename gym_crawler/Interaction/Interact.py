@@ -110,7 +110,14 @@ class Interact:
         server_response = self.send_command(create_str)
         return json.dumps(server_response)
 
-    # begins the game - WARNING!!!!: INCOMPLETE
-    def start_game(self):
-        self.stdin.write('{"get_options":{"list":1}}')
-        print(str(self.read_out()))
+    # begins the game
+    def play_game(self, gameid, FM_PLAY):
+        play_str = {"play_game": {"gameid": gameid, "followmode": FM_PLAY}}
+        server_response = self.send_command(play_str)
+        if server_response["play_game"]["return"] == 0:
+            return True
+        elif server_response["play_game"]["return"] == 1:
+            return True
+        elif server_response["play_game"]["return"] == 2:
+            return True
+        return False
