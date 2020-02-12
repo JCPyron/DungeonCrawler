@@ -120,4 +120,4 @@ class Interact:
             return True
         elif server_response["play_game"]["return"] == 2:
             return True
-        return False
+        return server_response
