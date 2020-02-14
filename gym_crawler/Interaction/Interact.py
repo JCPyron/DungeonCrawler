@@ -121,3 +121,10 @@ class Interact:
         elif server_response["play_game"]["return"] == 2:
             return True
         return server_response
+
+    def exit_game(self, EXIT_QUIT):
+        exit_str = {"exit_game": {"exit_type": EXIT_QUIT}}
+        server_response = self.send_command(exit_str)
+        if server_response["exit_game"]["return"] == True:
+            return True
+        return False
