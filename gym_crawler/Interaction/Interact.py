@@ -128,6 +128,7 @@ class Interact:
             return True
         return server_response
 
+    # exits the game(?)
     def exit_game(self, EXIT_QUIT):
         exit_str = {"exit_game": {"exit_type": EXIT_QUIT}}
         server_response = self.send_command(exit_str)
