@@ -65,6 +65,14 @@ class Interact:
             read_char = self.stderr.read(1)
         return json.loads(out_str)
 
+    # function to run the functions to start the game, play it, and end it
+    def nethack4_main(self):
+        self.auth("random", "ece431l02", "NULL")
+        game_id = self.create_game("", "ken", -2, -2, -2, -2)
+        self.play_game(game_id, 0)
+        self.exit_game(1)
+        return True
+
     # authenticate with the server
     def auth(self, username, password, email):
         auth_str = {"auth": {"username": username, "password": password, "email": "NULL"}}
@@ -92,7 +100,7 @@ class Interact:
         return server_response
 
     # creates the game instance
-    def create_game(self, seed='', name='ken', role=-2, race=-2, align=-2, gender=-2):
+    def create_game(self, seed, name, role, race, align, gender):
         for option in self.options_json["options"]:
             if option["name"] == 'seed':
                 option["value"] = seed
@@ -111,7 +119,7 @@ class Interact:
         return json.dumps(server_response)
 
     # Lists which command can be used in "request_command" command
-    def get_commands():
+    def get_commands(self):
         get_cmd_str = {"get_commands": {}}
         server_response = self.send_command(get_cmd_str)
         print(server_response)
