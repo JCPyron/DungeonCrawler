@@ -116,11 +116,6 @@ class Interact:
         server_response = self.send_command(get_cmd_str)
         print(server_response)
 
-    # begins the game - WARNING!!!!: INCOMPLETE
-    def start_game(self):
-        self.stdin.write('{"get_options":{"list":1}}')
-        print(str(self.read_out()))
-
     # begins the game
     def play_game(self, gameid, FM_PLAY):
         play_str = {"play_game": {"gameid": gameid, "followmode": FM_PLAY}}
