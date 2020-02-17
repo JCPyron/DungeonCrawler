@@ -1,5 +1,0 @@
-0 0
-ASCII
-ascii_overrides.txt
-dungeoncolors.txt
-rogue_overrides.txt
