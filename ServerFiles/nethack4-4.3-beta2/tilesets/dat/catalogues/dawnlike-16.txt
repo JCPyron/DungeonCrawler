@@ -1,6 +1,0 @@
-16 16
-DawnLike
-dawnlike-16.txt
-dawnlike-343.txt
-dawnlike-4.txt
-dawnlike-dragons.txt

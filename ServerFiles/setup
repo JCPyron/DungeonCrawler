@@ -1,4 +1,5 @@
 #!/bin/bash
+./killProcesses
 sudo apt-get install libpq-dev
 sudo apt-get install g++
 sudo apt-get install gcc
@@ -18,23 +19,22 @@ echo "Dependancies installed"
 echo "removing old compilation"
 sudo service postgresql stop
 rm -rf ~/nethack4
-cp -r ~/nethack4-4.3-beta2 ~/nethack4
-cp ~/nethack4-4.3-beta2/doc/changelog.txt ~/nethack4/doc/
-
-#setting the correct file permissions
-sudo chmod 666 -R ~/nethack4
-sudo chmod 777 ~/nethack4/aimake ~/nethack4/scripts/vcs-hooks/git-hooks-post-commit
-sudo find ~/nethack4 -type d -exec chmod 755 {} \;
-sudo chmod 777 ~/nethack4/libnethack/util/*.sh
-sudo find ~/nethack4 -regex ".*\.(sh|pl|bat)$" -exec chmod 777 {} \;
+cp -r ~/nethack4-master ~/nethack4
+ls ~/nethack4/doc
+# setting the correct file permissions - if files come from a windows machine
+#sudo chmod 666 -R ~/nethack4
+#sudo chmod 777 ~/nethack4/aimake ~/nethack4/scripts/vcs-hooks/git-hooks-post-commit
+#sudo find ~/nethack4 -type d -exec chmod 755 {} \;
+#sudo chmod 777 ~/nethack4/libnethack/util/*.sh
+#sudo find ~/nethack4 -regex ".*\.(sh|pl|bat)$" -exec chmod 777 {} \;
 
 mkdir ~/nethack4/build
 cd ~/nethack4/build
 
 echo "compiling nethack"
 # second command suppresses all output. for debug use first
-#../aimake -i ~/nethack4 --without=gui --with=server --with=playfield_utils
-../aimake -i ~/nethack4 --without=gui --with=server --with=playfield_utils > /dev/null 2>&1
+../aimake -i ~/nethack4 --without=gui --with=server --with=playfield_utils
+#../aimake -i ~/nethack4 --without=gui --with=server --with=playfield_utils > /dev/null 2>&1
 echo "nethack compiled"
 echo "postgresql init"
 sudo service postgresql start
