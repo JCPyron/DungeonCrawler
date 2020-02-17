@@ -196,6 +196,8 @@ http://nethack4.org/latest/nethack4/libnethack_common/include/nethack_types.h
 
 https://github.com/tsadok/nethack4/blob/master/doc/dgn_comp.pod
 
+https://github.com/tsadok/nethack4/blob/master/doc/lev_comp.pod
+
 ### Reinforcement Learning Articles:
 
 https://skymind.ai/wiki/deep-reinforcement-learning
