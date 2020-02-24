@@ -250,15 +250,11 @@ read_input(void)
             exit_client("Inactivity timeout", 0);
 
         ret = read(infd, &commbuf[datalen], COMMBUF_SIZE - datalen - 1);
-        if (ret == -1){
-            log_msg("ret=-1, term=%d, done=%d",termination_flag,done);
+        if (ret == -1)
             continue;   /* some signals will set termination_flag, others won't */
-        }
         else if (ret == 0)
             exit_client("Input pipe lost", 0);
-        else{
-            log_msg("read in :%s:",commbuf);
-        }
+
         datalen += ret;
 
         if (commbuf[datalen - ret] == '\033') {
@@ -294,8 +290,6 @@ read_input(void)
     }
     /* message received; now it's our turn to send */
     can_send_msg = TRUE;
-    log_msg("datalen: %d",datalen);
-    log_msg("commbuf :%s:",commbuf);
     return jval;
 }
 
@@ -307,11 +301,9 @@ client_main_loop(void)
     const char *key;
     void *iter;
     int i;
-    log_msg("client_main_loop executed");
     while (!termination_flag) {
         obj = read_input();
         if (termination_flag) {
-            log_msg("termination_flag, %d",termination_flag);
             if (obj)
                 json_decref(obj);
             return;
