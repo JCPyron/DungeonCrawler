@@ -20,7 +20,6 @@ echo "removing old compilation"
 sudo service postgresql stop
 rm -rf ~/nethack4
 cp -r ~/nethack4-master ~/nethack4
-ls ~/nethack4/doc
 # setting the correct file permissions - if files come from a windows machine
 #sudo chmod 666 -R ~/nethack4
 #sudo chmod 777 ~/nethack4/aimake ~/nethack4/scripts/vcs-hooks/git-hooks-post-commit
