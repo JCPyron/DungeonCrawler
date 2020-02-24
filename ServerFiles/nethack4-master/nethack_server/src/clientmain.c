@@ -230,7 +230,6 @@ exit_client(const char *err, int coredumpsignal)
                 coredumpsignal);
 }
 
-
 json_t *
 read_input(void)
 {
@@ -276,6 +275,23 @@ read_input(void)
         }
 
         commbuf[datalen] = '\0';        /* terminate the string */
+
+
+        //removing all new line chatacters
+        int ind, jnd;
+        for(ind=0; ind<datalen; ind++)
+        {
+            if(commbuf[ind] == '\n')
+            {
+                for(jnd=ind; jnd<datalen; jnd++)
+                {
+                    commbuf[jnd] = commbuf[jnd+1];
+                }
+                datalen--;
+                ind--;
+            }
+        }
+
         bp = &commbuf[datalen - 1];
         while (isspace(*bp))
             bp--;
