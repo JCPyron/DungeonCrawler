@@ -83,6 +83,7 @@ sudo -u postgres createuser --interactive
 ```
 sudo -u nethack psql -d netdb
 CREATE EXTENSION pgcrypto;
+ALTER USER nethack PASSWORD 'pass';
 \q
 ```
 
