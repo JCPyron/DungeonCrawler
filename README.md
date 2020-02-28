@@ -193,7 +193,9 @@ http://nethack4.org/latest/nethack4/doc/server_protocol.txt
 
 http://nethack4.org/latest/nethack4/libnethack_common/include/nethack_types.h
 
-### Creating a Custom Dungeon for NetHack
+### Creating a Custom Level/Dungeon for NetHack
+
+https://github.com/tsadok/nethack4/tree/master/libnethack/dat
 
 https://github.com/tsadok/nethack4/blob/master/doc/dgn_comp.pod
 
