@@ -13,6 +13,7 @@ class Interact:
     stderr = ''
     client = ''
     options_json = ''
+    MAX_CHAR_SEND = 4096
 
     # init connection and get file descriptors
     def __init__(self, hostname, username, key_path):
@@ -33,16 +34,25 @@ class Interact:
         self.stderr.close()
         self.client.close()
 
+    # server only reads in 4096 characters at a time.
+    # This means, for larger commands, they must be split up
+    def __send_large_command__(self, send_str):
+        for i in range(0, len(send_str), self.MAX_CHAR_SEND):
+            self.stdin.write(send_str[i:i + self.MAX_CHAR_SEND - 1] + b'\n')
+
     # sends the given json command and returns the result
     def send_command(self, send_str):
         send_data = json.dumps(send_str).encode('utf_8')
-        self.stdin.write(send_data)
+        if len(send_data) > self.MAX_CHAR_SEND:
+            self.__send_large_command__(send_data)
+        else:
+            self.stdin.write(send_data)
         return self.read_out()
 
     # a debug method, sends the command and returns from stderr
     def send_command_read_err(self, send_str):
         send_data = json.dumps(send_str).encode('utf_8')
-        self.stdin.write(send_data + b'\n')
+        self.stdin.write(send_data)
         return self.read_err()
 
     # reads from stdout
@@ -100,7 +110,7 @@ class Interact:
         return server_response
 
     # creates the game instance
-    def create_game(self, seed, name, role, race, align, gender):
+    def create_game(self, seed='', name='Ken', role=-2, race=-2, align=-2, gender=-2):
         for option in self.options_json["options"]:
             if option["name"] == 'seed':
                 option["value"] = seed
