@@ -250,7 +250,6 @@ read_input(void)
 
         ret = read(infd, &commbuf[datalen], COMMBUF_SIZE - datalen - 1);
         if (ret == -1){
-            log_msg("ret=-1, term=%d, done=%d",termination_flag,done);
             continue;   /* some signals will set termination_flag, others won't */
         }
         else if (ret == 0)
