@@ -22,14 +22,14 @@ install putty
 Go to Connection>SSH>Auth
 click browse and select the .pkk file
 Go back to Session
-Hostname should be:  ubuntu@ec2-34-229-53-61.compute-1.amazonaws.com
+Hostname should be:  ubuntu@ec2-54-86-115-196.compute-1.amazonaws.com
 Port: 22
 Connection Type: SSH
 Type in a name for "Saved Sessions" and Click Save. That'll keep you from having to do all this again
 click open then yes
 
 #### Linux
-run the following command `ssh -i "NetCrawler.pem" ubuntu@ec2-34-229-53-61.compute-1.amazonaws.com`
+run the following command `ssh -i "NetCrawler.pem" ubuntu@ec2-54-86-115-196.compute-1.amazonaws.com`
 
 
 
@@ -137,7 +137,7 @@ If needed (i.e. when setting up a new client connection to a new AWS server) upd
 ```
 ; Connect to AWS Server
 [Connect]
-host=ec2-34-229-53-61.compute-1.amazonaws.com 
+host=ec2-54-86-115-196.compute-1.amazonaws.com
 user=ubuntu
 key_path=NetCrawler.pem
 
