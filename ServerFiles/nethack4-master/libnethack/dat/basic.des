@@ -6,9 +6,7 @@
 # This is the basic room
 #
 
-MAZE: "basicroom", ' '
-DESCRIPTIOM: MAZELIKE
-ALIGNMENT: unaligned
+MAZE: "basic", ' '
 FLAGS: hardfloor
 INIT_MAP: '.', '.', false, false, lit, false
 GEOMETRY : center, center

@@ -15,7 +15,7 @@
 #
 
 #
-# The Dugeons of Ken
+# The Dungeons of Ken
 #
 # A simple two level dungeon
 
@@ -23,7 +23,7 @@
 DUNGEON:    "The Dungeons of Ken" "K" (1,0)
 DESCRIPTION:    mazelike
 ALIGNMENT: noalign
-LEVEL: "basicroom" @ (1, 0)
+LEVEL: "basic" @ (1, 0)
 
 
 #DUNGEON:	"The Dungeons of Doom" "D" (25, 5)
@@ -59,22 +59,22 @@ LEVEL: "basicroom" @ (1, 0)
 #		monsters can properly migrate here under certain
 #		circumstances.
 
-DUNGEON:	"Gehennom" "G" (20, 5)
-DESCRIPTION:	mazelike
-DESCRIPTION:	hellish
-ALIGNMENT:	noalign
-BRANCH:		"Vlad's Tower" @ (9, 5) up
-LEVEL:		"valley" "V" @ (1, 0)
-LEVEL:		"sanctum" "none" @ (-1, 0)
-LEVEL:		"juiblex" "J" @ (4, 4)
-LEVEL:		"baalz" "B" @ (6, 4)
-LEVEL:		"asmodeus" "A" @ (2, 6)
-LEVEL:		"wizard1" "none" @ (11, 6)
-CHAINLEVEL:	"wizard2" "X" "wizard1" + (1, 0)
-CHAINLEVEL:	"wizard3" "Y" "wizard1" + (2, 0)
-LEVEL:		"orcus" "O" @ (10, 6)
-LEVEL:		"fakewiz1" "F" @ (-6,4)
-LEVEL:		"fakewiz2" "G" @ (-6,4)
+#DUNGEON:	"Gehennom" "G" (20, 5)
+#DESCRIPTION:	mazelike
+#DESCRIPTION:	hellish
+#ALIGNMENT:	noalign
+#BRANCH:		"Vlad's Tower" @ (9, 5) up
+#LEVEL:		"valley" "V" @ (1, 0)
+#LEVEL:		"sanctum" "none" @ (-1, 0)
+#LEVEL:		"juiblex" "J" @ (4, 4)
+#LEVEL:		"baalz" "B" @ (6, 4)
+#LEVEL:		"asmodeus" "A" @ (2, 6)
+#LEVEL:		"wizard1" "none" @ (11, 6)
+#CHAINLEVEL:	"wizard2" "X" "wizard1" + (1, 0)
+#CHAINLEVEL:	"wizard3" "Y" "wizard1" + (2, 0)
+#LEVEL:		"orcus" "O" @ (10, 6)
+#LEVEL:		"fakewiz1" "F" @ (-6,4)
+#LEVEL:		"fakewiz2" "G" @ (-6,4)
 
 #
 #	The Mines of the Gnomes of Zurich.
