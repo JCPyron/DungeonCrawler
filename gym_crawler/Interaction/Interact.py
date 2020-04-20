@@ -140,10 +140,6 @@ class Interact:
         server_response = self.send_command(play_str)
         if server_response["play_game"]["return"] == 0:
             return True
-        elif server_response["play_game"]["return"] == 1:
-            return True
-        elif server_response["play_game"]["return"] == 2:
-            return True
         return server_response
 
     # exits the game(?)
