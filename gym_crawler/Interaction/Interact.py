@@ -80,7 +80,7 @@ class Interact:
         self.auth("random", "ece431l02", "NULL")
         game_id = self.create_game("", "ken", -2, -2, -2, -2)
         self.play_game(game_id, 0)
-        self.exit_game(1)
+        self.exit_game(0)
         return True
 
     # authenticate with the server
