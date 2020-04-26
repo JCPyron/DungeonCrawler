@@ -23,20 +23,16 @@ class CrawlerEnv(gym.Env):
                                   config['Connect']['key_path'])
         logger.debug("Connected to Server")
 
-        # Login
-        auth = ssh_connection.auth(config['Logon']['user'], config['Logon']['password'],
-                                   config['Logon']['email'])
-        if not auth:
-            logger.debug("Auth Failed")
+        # start a game
+        # nethack4_main has optional parameters that are game options that can be set
+        game_creation_success = ssh_connection.nethack4_main(config['Logon']['user'],
+                                                             config['Logon']['password'],
+                                                             config['Logon']['email'])
+        if not game_creation_success:
+            logger.debug("Error with running a game has occured")
             quit(1)
-        logger.debug("Logged into NetHack")
+        logger.debug("Game has been started")
         quit(0)
-
-        # Set Options
-        # ...
-
-        # Start Game
-        # ...       
 
         # OpenAI Specific
         self.action_space = spaces.Discrete(4)

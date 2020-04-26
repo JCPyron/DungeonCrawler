@@ -1,6 +1,5 @@
 import paramiko
 import json
-import struct
 
 
 class Interact:
@@ -25,7 +24,8 @@ class Interact:
         self.client = paramiko.SSHClient()
         self.client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         self.client.connect(self.hostname, port=22, username=self.username, pkey=self.key)
-        self.stdin, self.stdout, self.stderr = self.client.exec_command("~/startServer")
+        self.stdin, self.stdout, self.stderr = self.client.exec_command(
+            "~/nethack4/nethack4-server -H localhost -o 5432 -u nethack -a pass -D netdb")
 
     # runs on exit, closes connection
     def __exit__(self, exc_type, exc_value, traceback):
@@ -47,6 +47,7 @@ class Interact:
             self.__send_large_command__(send_data)
         else:
             self.stdin.write(send_data)
+        self.stdin.flush()
         return self.read_out()
 
     # a debug method, sends the command and returns from stderr
@@ -63,6 +64,7 @@ class Interact:
         while read_char != b'\x00':
             out_str += str(read_char.decode("utf-8"))
             read_char = self.stdout.read(1)
+        self.stdout.flush()
         return json.loads(out_str)
 
     # read from stderr
@@ -76,11 +78,14 @@ class Interact:
         return json.loads(out_str)
 
     # function to run the functions to start the game, play it, and end it
-    def nethack4_main(self):
-        self.auth("random", "ece431l02", "NULL")
-        game_id = self.create_game("", "ken", -2, -2, -2, -2)
+    def nethack4_main(self, username, password, email, seed='', name='Ken', role=-2, race=-2,
+                      align=-2, gender=-2):
+        auth_success = self.auth(username, password, email)
+        if not auth_success:
+            print("error authenticating with Nethack")
+            return False
+        game_id = self.create_game(seed, name, role, race, align, gender)
         self.play_game(game_id, 0)
-        self.exit_game(1)
         return True
 
     # authenticate with the server
@@ -106,7 +111,7 @@ class Interact:
     # returns the options struct, can can be changed if desired
     def get_options(self):
         opt_str = {'get_options': {}}
-        server_response = self.send_command_read_err(opt_str)
+        server_response = self.send_command(opt_str)
         return server_response
 
     # creates the game instance
@@ -125,7 +130,7 @@ class Interact:
             elif option["name"] == 'gender':
                 option["value"] = gender
         create_str = {"create_game": self.options_json}
-        server_response = self.send_command(create_str)
+        server_response = self.send_command_read_err(create_str)
         return json.dumps(server_response)
 
     # Lists which command can be used in "request_command" command
