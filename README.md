@@ -6,6 +6,7 @@
     2. [Setting up the game server](#server)
     3. [Installing the Crawler](#crawl)
     4. [Creating more actions](#act)
+    5. [Custom Maps](#maps)
 3. [Resources](#resources)
 
 
@@ -179,6 +180,79 @@ All commands will look similar to this method. They should create a JSON object 
 For implementation, when the agent decides it wants to preform a specific action, it will simply run the method which will then send the command to the server.
 
 During development, we tried to keep everything as separated as possible to allow for individual, concurrent development. It also allows the code to be easily improved and developed.
+
+### How to Customize NetHack4 Maps <a name="maps"></a>
+
+A guide to how to make special levels in NetHack4 using the utilities provided by the developers of the games. Currently,
+one is able to add special levels to the game, but does not have total manual control of every room in a dungeon.
+
+#### Introduction
+
+This guide assumes one is already familiar with the setup bash script located in `DungeonCrawler/ServerFiles` directory.
+
+At the end of the setup bash script the command `../aimake -i ~/nethack4 --without=gui --with=server --with=playfield_utils` 
+is ran to compile the game. The arguement `--with=playfield_utils` grants the user easy access to a few important command
+line utilities necessary to compile special levels without re-compiling the whole game. The utilities are `lev_comp`, 
+`dgn_comp`, and `dlb`.
+
+The utilities should be located within the directory in which NetHack4 was installed, in this case `~/nethack4`.
+Original documentation, from NetHack, for each utility has been linked below.
+
+##### [lev_comp](https://github.com/JCPyron/DungeonCrawler/blob/customMap/ServerFiles/nethack4-master/doc/lev_comp.pod)
+
+##### [dgn_comp](https://github.com/JCPyron/DungeonCrawler/blob/master/ServerFiles/nethack4-master/doc/dgn_comp.pod)
+
+##### [dlb](https://github.com/JCPyron/DungeonCrawler/tree/master/ServerFiles/nethack4-master/doc/dlb.podc)
+
+#### Step-by-step
+
+##### Compile level file
+
+After creating a level according to [lev_comp](https://github.com/JCPyron/DungeonCrawler/blob/customMap/ServerFiles/nethack4-master/doc/lev_comp.pod),
+the level can be compiled by using the following commands on the command line.
+
+```
+cd ~/nethack4/ # Change directory to where lev_comp is located
+./lev_comp ~/nethack4/libnethack/dat/level.des # Run the lev_comp function with the path to your new level description file as an arguement
+```
+
+A new file called `level.lev` will be generated in the current working directory, keep track of this file for 
+re-packing the archive file.
+
+##### Compile dungeon file
+
+After editing the dungeon file in `~/nethack4/libnethack/dat/` called `dugeon.def` to include the level created in 
+the previous step, using the instructions in [dgn_comp](https://github.com/JCPyron/DungeonCrawler/blob/master/ServerFiles/nethack4-master/doc/dgn_comp.pod) 
+the dungeon definition file can be recompiled using the dgn_comp function.
+
+```
+cd ~/nethack4/ # Change directory to where dgn_comp is located
+./dgn_comp ~/nethack4/libnethack/dat/dungeon.def # Run the dgn_comp fuction with the path to your new dungeon definition file
+```
+
+A new `dungeon` file will be created, keep track of this file for re-packing the archive file.
+
+##### Un-packing and re-packing the archive
+
+Run the following set of commands to un-pack the archive library `nhdat`
+
+```
+cd ~/nethack4/ # Change directory tp where dlb is located
+mkdir ./dataDump # Create a directory to extract the contents of the archive into
+cd ./dataDump # Change directory into where we will exract the contents of the archive
+~/nethack4/dlb xf ~/nethack4/data/nhdat # Use the fuction dlb with the arguement x (extract) and f (specify file)
+```
+
+After adding and removing `*.lev` and the `dungeon` file
+
+To re-pack the archive, run the following commands
+
+```
+cd ~/nethack4/dataDump # Change directory to where dataDump is located
+../dlb c # Run the dlb function of the directory of files 
+```
+
+This will create a new `nhdat` file to replace the old one
 
 ## Resources <a name="resources"></a>
 
