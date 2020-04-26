@@ -76,9 +76,9 @@ sudo -u postgres createdb netdb
 sudo -u postgres createuser --interactive
 ```
 
-*Input "nethack" as username*
+*Input "nethack" as the 'name of role to add'*
 
-*Input "y" for yes*
+*Input "y" for yes to be a superuser*
 
 ```
 sudo -u nethack psql -d netdb

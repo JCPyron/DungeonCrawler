@@ -85,7 +85,7 @@ class Interact:
             print("error authenticating with Nethack")
             return False
         game_id = self.create_game(seed, name, role, race, align, gender)
-        self.play_game(game_id, 0)
+        self.play_game(game_id, 0) 
         return True
 
     # authenticate with the server
@@ -145,16 +145,10 @@ class Interact:
         server_response = self.send_command(play_str)
         if server_response["play_game"]["return"] == 0:
             return True
-        elif server_response["play_game"]["return"] == 1:
-            return True
-        elif server_response["play_game"]["return"] == 2:
-            return True
         return server_response
 
-    # exits the game(?)
-    def exit_game(self, EXIT_QUIT):
-        exit_str = {"exit_game": {"exit_type": EXIT_QUIT}}
+    # exits the game
+    def exit_game(self, EXIT_SAVE):
+        exit_str = {"exit_game": {"exit_type": EXIT_SAVE}}
         server_response = self.send_command(exit_str)
-        if server_response["exit_game"]["return"] == True:
-            return True
-        return False
+        return server_response
